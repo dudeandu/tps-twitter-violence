@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toronto Star</title>
+    <script src="https://misc.thestar.com/interactivegraphic/libraries/d3v4.min.js"></script>
+    <script src="https://misc.thestar.com/interactivegraphic/libraries/topojson.v2.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+
+<style>
+
+  @font-face {
+    font-family: TorstarDeckCondensed;
+    src: url(https://misc.thestar.com/fonts/TorstarDeckCondensed-Semibold.otf);
+  }
+
+
+  body {
+    margin: 0;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      background-color: #f8f8f8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .clearfix:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+        }
+        
+    .clearfix {
+        display: block;
+        }
+
+.graphic-wrapper {
+  padding: 10px 0;
+  max-width: 1029px;
+  position: relative;
+  overflow: hidden;
+}
+
+.graphic-top {
+  padding: 8px 0; 
+  max-width: 614px;
+  margin:0 auto;}
+  @media (min-width: 526px) {
+    .graphic-top {
+      padding: 12px 0; } }
+  @media (min-width: 592px) {
+    .graphic-top {
+      padding: 16px 0; } }
+
+h2.graphic-top__graphic-hed {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2em;
+  padding-bottom: 4px;
+  font-family: "TorstarDeckCondensed", Georgia, "Times New Roman", Times, serif;
+  color: #000;
+  text-rendering: optimizeLegibility;
+  font-weight: normal;
+  font-style: normal;
+  -moz-osx-font-smoothing: grayscale;
+}
+  @media (min-width: 526px) {
+    h2.graphic-top__graphic-hed {
+      font-size: 28px; } }
+  @media (min-width: 592px) {
+    h2.graphic-top__graphic-hed {
+      font-size: 30px; } }
+
+h3.graphic-top__graphic-dek {
+  font-size: 14px;
+  line-height: 1.35em;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #444; }
+  @media (min-width: 526px) {
+    h3.graphic-top__graphic-dek {
+      font-size: 15px; } }
+  @media (min-width: 592px) {
+    h3.graphic-top__graphic-dek {
+      font-size: 16px; } }
+
+.graphic-bottom {
+  margin: 12px auto 0;
+  padding: 4px 0 16px;
+  max-width: 614px;
+  border-top: 1px solid #b0b0b0; }
+  .graphic-bottom:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0; }
+  @media (min-width: 526px) {
+    .graphic-bottom {
+      padding-top: 6px; } }
+  @media (min-width: 592px) {
+    .graphic-bottom {
+      padding-top: 8px; } }
+
+p.graphic-bottom__graphic-source {
+  margin: 0;
+  padding-bottom: 4px;
+  font-size: 11px;
+  line-height: 1.35em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #707070;
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase; }
+  @media (min-width: 526px) {
+    p.graphic-bottom__graphic-source {
+      max-width: 65%;
+      vertical-align: top;
+      float: left;
+      font-size: 12px; } }
+p.graphic-bottom__graphic-byline {
+  margin: 0;
+  padding-bottom: 4px;
+  font-size: 11px;
+  line-height: 1.35em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #707070;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility; }
+  @media (min-width: 526px) {
+    p.graphic-bottom__graphic-byline {
+      text-align: right;
+      max-width: 50%;
+      vertical-align: top;
+      float: right;
+      font-size: 12px; } }
+p.graphic-bottom__notetext {
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.35em;
+  padding-bottom: 8px;
+  color: #444;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility; }
+  @media (min-width: 526px) {
+    p.graphic-bottom__notetext {
+      font-size: 15px; } }
+  @media (min-width: 592px) {
+    p.graphic-bottom__notetext {
+      font-size: 16px; } }
+
+
+p.instructions { 
+  max-width: 600px;
+  margin: 15px auto 0;
+ font-size: 13px;
+letter-spacing: 0.3px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+line-height: 1.3em;
+font-weight: 400;
+color: #666;
+-moz-osx-font-smoothing: auto;
+text-rendering: optimizeLegibility;
+white-space: nowrap;}
+
+
+#pointers {
+  display: inline-block;
+  height: 20px;
+  margin-bottom: -1px;
+}
+
+.map-container {
+	width: 100%;
+	position: relative;
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.map {
+	width: 100%;
+  display: inline-block;
+}
+
+
+.mapheading {
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 18px;
+  line-height: 1em;
+  padding: 5px 0 10px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #666;
+}
+
+.ward, .ward25 {
+	/*stroke: #f8f8f8;*/
+  stroke: #CCC;
+	stroke-width: 0.5px;
+	/*fill-opacity: 0.8;*/
+}
+
+ .active-node {
+      stroke: #000;
+      stroke-width: 1px;
+    }
+
+.scalevalue {
+	font-size: 13px;
+	color: #404040;
+}
+
+
+.scale {
+  fill: url(#gradient);
+}
+
+#backbox {
+  fill-opacity: 0;
+}
+
+.area-label {
+	font-size: 12px;
+	color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+	text-anchor: middle;
+  	pointer-events: none;
+}
+
+.area-label-background {
+  	stroke: #fff;
+    stroke-width: 3px;
+    stroke-opacity: 0.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/*TOOLTIP*/
+
+#tooltip {
+    position: absolute;
+    width: 180px;
+    height: 250px;
+    pointer-events: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+#tooltip.hidden {
+    display: none;
+}
+
+#value {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.95);
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+
+}
+
+
+#tooltip p {
+    margin: 0;
+    margin: 0;
+    line-height: 1.2em;
+    color: #333;
+    letter-spacing: 0.2px;
+}
+
+#tooltip .ttname {
+  font-size: 14px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+}
+
+#tooltip .ttvalue {
+  font-size: 13px;
+  padding-bottom: 0;
+  position: absolute;
+  right: 0;
+}
+
+#tooltip .ttvaluelabel {
+  font-size: 13px;
+  line-height: 1em;
+  padding: 4px 0 3px;
+  color: #666;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+
+#tooltip .totalspan {
+ font-weight: bold;
+ border-bottom: none;
+}
+
+/*END OF TOOLTIP*/
+
+.legend-bottom {
+  text-align: center;
+   margin: 10px 0 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+}
+
+.graphic-legend {
+  width: 280px;
+  
+  vertical-align: top;
+  /*margin-bottom: 15px;*/
+  display: none;
+}
+
+.active-legend {
+  display: inline-block;
+}
+
+
+.legendheading {
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.1em;
+  max-width: 280px;
+}
+
+.legendbox-container-1 {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.legendbox-container-2 {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.legendbox {
+  width: 35px;
+  height: 12px;
+  float: left;
+}
+
+#legendbox1 {
+  background-color: #EDEDED;
+}
+
+#legendbox2 {
+  background-color: #ffffe0;
+}
+
+#legendbox3 {
+  background-color: #ffddba;
+}
+
+#legendbox4 {
+  background-color: #ffbb93;
+}
+
+#legendbox5 {
+  background-color: #f9986f;
+}
+
+#legendbox6 {
+  background-color: #f1744c;
+}
+
+#legendbox7 {
+  background-color: #e54b29;
+}
+
+#legendbox8 {
+  background-color: #d70000;
+}
+
+
+
+.legendnumber-container-1 {
+  margin: 4px auto 0;
+  padding-left: 17px;
+}
+
+.legendnumber {
+  width: 35px;
+  float: left;
+  color: #555;
+  font-size: 12px;
+  line-height: 1em;
+  margin: 0;
+}
+
+
+
+/*END OF LEGEND*/
+
+
+
+
+
+
+
+@media (max-width: 526px) {
+
+
+  .map-container {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin: 0;
+  }
+
+  .map {
+    width: 100%;
+    display: block;
+    padding-bottom: 15px;
+  }
+
+
+
+
+  #tooltip .ttname {
+    font-size: 13px;
+    padding-bottom: 4px;
+  }
+
+  #tooltip .ttvalue {
+    font-size: 16px;
+    padding-bottom: 0;
+  }
+
+  .area-label {
+  	font-size: 9px;
+  }
+
+  .area-label-background {
+    stroke-width: 2px;
+}
+
+
+	
+}
+		
+</style>
+</head>
+<body>
+
+<div class="graphic-wrapper torontoneighbourhoodmap">
+	     <div class="graphic-top">
+        <h2 class="graphic-top__graphic-hed">Where Toronto felt the routine of gun violence</h2>
+        <h3 class="graphic-top__graphic-dek"> Every 911 call for gunshots in your neighbourhood is another potential victim — even if it ends up a false alarm. Here’s every @TPSOperations tweet about gun violence in 2020, by neighbourhood.</h3>
+        
+        <p class="instructions"><img id="pointers" src="hand-pointer.svg"> on each neighbourhood for details</p>
+      </div>
+
+
+
+
+    <div class="map-container">
+
+			<div class="map" id="map">
+      </div>
+
+			<div id="tooltip" class="hidden">
+			 	<div id="value"></div>
+			</div>
+
+		</div>
+
+		<div class="legend-bottom">
+
+   
+
+
+    <div class="graphic-legend active-legend" id="graphic-legend-1">
+      <p class="legendheading">Tweets referencing gun violence</p>
+    
+      <div class="legendbox-container-1 clearfix">
+        <div class="legendbox" id="legendbox1"></div>
+        <div class="legendbox" id="legendbox2"></div>
+        <div class="legendbox" id="legendbox3"></div>
+        <div class="legendbox" id="legendbox4"></div>
+        <div class="legendbox" id="legendbox5"></div>
+        <div class="legendbox" id="legendbox6"></div>
+        <div class="legendbox" id="legendbox7"></div>
+        <div class="legendbox" id="legendbox8"></div>
+      </div>
+        <div class="legendnumber-container-1 clearfix">
+        <p class="legendnumber" id="legendnumber0">0</p>
+        <p class="legendnumber" id="legendnumber1">5</p>
+        <p class="legendnumber" id="legendnumber2">10</p>
+        <p class="legendnumber" id="legendnumber3">15</p>
+        <p class="legendnumber" id="legendnumber4">20</p>
+        <p class="legendnumber" id="legendnumber5">25</p>
+        <p class="legendnumber" id="legendnumber6">30+</p>
+        <!-- <p class="legendnumber" id="legendnumber7">35+</p> -->
+      </div>
+    </div>
+    
+
+    </div>
+
+    <div class="graphic-bottom">
+     	<p class="graphic-bottom__graphic-source" id="source">Twitter/@TPSOperations</p>
+        <p class="graphic-bottom__graphic-byline" id="byline">Andres Plana/ Star graphic</p>
+
+  	</div>
+
+</div>
+
+<script type="text/javascript">
+
+			//Width and height
+			
+			var width = parseInt(d3.select('#map').style('width')),
+			  mapRatio = 0.51,
+  			height = width * mapRatio;
+
+			var projection = d3.geoMercator()
+							.scale(width * 113.9)
+              .center([-67.957,39.967])
+              .rotate([0,-13.19,0])
+							.translate([width/2, height/2]);
+							
+
+			//Define default path generator
+			var path = d3.geoPath().projection(projection);
+
+			// var colour =  d3.scaleThreshold().domain([50000,60000,70000,80000,90000,100000,110000]).range(['#d3edf4','#bbdae6','#a3c7d8','#8ab5c9','#72a3bb','#5a91ae','#3d80a0','#166f93']);
+      var colour =  d3.scaleThreshold().domain([5,10,15,20,25,30,35]).range(['#d3edf4','#bbdae6','#a3c7d8','#8ab5c9','#72a3bb','#5a91ae','#3d80a0','#166f93']);
+      var colour =  d3.scaleThreshold().domain([1,5,10,15,20,25,30,35]).range(['#EDEDED', '#ffffe0', '#ffddba', '#ffbb93', '#f9986f', '#f1744c', '#e54b29', '#d70000']);
+
+
+
+			//Create SVG element
+
+		 var svg = d3.select("#map")
+						.append("svg")
+						.attr("width", width)
+						.attr("height", height);
+
+      	svg.append('rect').attr("width", width)
+            .attr("height", height)
+            .attr("id","backbox");
+
+			var g = svg.append("g").attr("width", width)
+						.attr("height", height);
+
+			var labels = svg.append("g").attr("width", width)
+						.attr("height", height);
+
+
+	  var varByName = d3.map();
+    var deathByName = d3.map();
+    var deathTotalByName = d3.map();
+    var injuryByName = d3.map();
+    var injuryTotalByName = d3.map();
+   
+
+      d3.csv("neighourhooddata.csv", function(error, data) {
+
+
+   			data.forEach(function(d) {
+		       	varByName.set(d.id, d.totevents);
+            deathByName.set(d.id, d.deaths);
+            // deathTotalByName.set(d.id, d.deathevents);
+            injuryByName.set(d.id, d.injuries);
+            // injuryTotalByName.set(d.id, d.injuryevents);
+            // d.deaths, d.deathevents, d.injuries, d.injuryevents
+    			});
+
+        // console.log(varByName)
+        // console.log(deathByName)
+        // console.log(deathTotalByName)
+        // console.log(injuryByName)
+        // console.log(injuryTotalByName)
+  
+			//Load in GeoJSON data
+			d3.json("neighbourhoods.json", function(error,json) {
+				if (error) throw error;
+
+
+				//Bind data and create one path per GeoJSON feature
+				g.selectAll("path")
+				   .data(topojson.feature(json,json.objects.neighbourhoods).features)
+				   .enter().append("path")
+				   .attr("d", path)
+				   .attr("class", "ward")
+				   .attr("id", function(d) {return d.properties.ID; })
+				   .attr("fill", function(d) { return colour(varByName.get(d.properties.ID)); });
+
+
+
+	   	 labels.append("text")
+	                .attr('class', "area-label area-label-background scarboroughlabel")
+	                .attr("x", function (d) { return projection([-79.227722,43.766097])[0]; })
+	                .attr("y", function (d) { return projection([-79.227722,43.766097])[1]; }) 
+	                .text("Scarborough");
+
+				labels.append("text")
+	                .attr('class', "area-label area-label-background etobicokelabel")
+	                .attr("x", function (d) { return projection([-79.545872,43.664813])[0]; })
+	                .attr("y", function (d) { return projection([-79.545872,43.664813])[1]; }) 
+	                .text("Etobicoke");
+
+
+	            labels.append("text")
+	                .attr('class', "area-label area-label-background northyorklabel")
+	                .attr("x", function (d) { return projection([-79.435117, 43.766014])[0]; })
+	                .attr("y", function (d) { return projection([-79.435117, 43.766014])[1]; }) 
+	                .text("North York");
+
+	            labels.append("text")
+	                .attr('class', "area-label area-label-background eastyorklabel")
+	                .attr("x", function (d) { return projection([-79.326359, 43.690753])[0]; })
+	                .attr("y", function (d) { return projection([-79.326359, 43.690753])[1]; }) 
+	                .text("East York");
+
+	            labels.append("text")
+	                .attr('class', "area-label area-label-background yorklabel")
+	                .attr("x", function (d) { return projection([-79.486996,43.687415])[0]; })
+	                .attr("y", function (d) { return projection([-79.486996,43.687415])[1]; }) 
+	                .text("York");
+
+	            labels.append("text")
+	                .attr('class', "area-label area-label-background downtownlabel")
+	                .attr("x", function (d) { return projection([-79.382080,43.659100])[0]; })
+	                .attr("y", function (d) { return projection([-79.382080,43.659100])[1]; }) 
+	                .text("Downtown");
+
+
+				labels.append("text")
+	                .attr('class', "area-label scarboroughlabel")
+	                .attr("x", function (d) { return projection([-79.227722,43.766097])[0]; })
+	                .attr("y", function (d) { return projection([-79.227722,43.766097])[1]; }) 
+	                .text("Scarborough");
+
+				labels.append("text")
+	                .attr('class', "area-label etobicokelabel")
+	                .attr("x", function (d) { return projection([-79.545872,43.664813])[0]; })
+	                .attr("y", function (d) { return projection([-79.545872,43.664813])[1]; }) 
+	                .text("Etobicoke");
+
+
+	            labels.append("text")
+	                .attr('class', "area-label northyorklabel")
+	                .attr("x", function (d) { return projection([-79.435117, 43.766014])[0]; })
+	                .attr("y", function (d) { return projection([-79.435117, 43.766014])[1]; }) 
+	                .text("North York");
+
+	            labels.append("text")
+	                .attr('class', "area-label eastyorklabel")
+	                .attr("x", function (d) { return projection([-79.326359, 43.690753])[0]; })
+	                .attr("y", function (d) { return projection([-79.326359, 43.690753])[1]; }) 
+	                .text("East York");
+
+	            labels.append("text")
+	                .attr('class', "area-label yorklabel")
+	                .attr("x", function (d) { return projection([-79.486996,43.687415])[0]; })
+	                .attr("y", function (d) { return projection([-79.486996,43.687415])[1]; }) 
+	                .text("York");
+
+	            labels.append("text")
+	                .attr('class', "area-label downtownlabel")
+	                .attr("x", function (d) { return projection([-79.382080,43.659100])[0]; })
+	                .attr("y", function (d) { return projection([-79.382080,43.659100])[1]; }) 
+	                .text("Downtown");
+
+ 
+
+	              
+
+	           
+
+
+				d3.selectAll(".ward")
+
+					.on("mouseover", function(d) {
+
+								this.parentNode.appendChild(this);
+
+								var thisid = (d.properties.NAME);
+								d3.select(this).classed("active-node", true);
+
+
+								
+								d3.select("#tooltip")
+						            .select("#value")
+                        
+
+                        .html(function(){
+                          return "<p class='ttname'>" 
+                          + (d.properties.NAME) 
+                          +  "</p><p class='ttvaluelabel'>Total tweets: <span class='ttvalue'>" 
+                          + d3.format(',.0f')(varByName.get(d.properties.ID)) 
+                          + "</span></p><p class='ttvaluelabel'>Deaths: <span class='ttvalue'>" 
+                          + d3.format(',.0f')(deathByName.get(d.properties.ID)) 
+                          + "</span></p><p class='ttvaluelabel'>Injuries: <span class='ttvalue'>" 
+                          + d3.format(',.0f')(injuryByName.get(d.properties.ID)) 
+                          + "</span></p>";
+                        });
+                        
+
+                        // return "<p class='ttname'>" + (d.properties.NAME) +  "</p><p class='ttvaluelabel'>Incidents/ tweets here tktkt:</p><p class='ttvalue'>" + d3.format(',.0f')(varByName.get(d.properties.ID)) + "</p>";
+
+
+                        // });
+						  
+						          d3.selectAll("#tooltip").classed("hidden", false);
+						})
+
+          			.on("mousemove", function(){
+                      d3.select("#tooltip")
+                      .style("top",(d3.event.pageY-240)+"px")
+                      .style("left", function() {
+                          if (d3.event.pageX > (width - 140)) {return (d3.event.pageX-180)+"px";}
+                          else if (d3.event.pageX < (80)) {return (d3.event.pageX)+"px";}
+                          else {return (d3.event.pageX-60)+"px";}
+                        });
+                    })
+
+					.on("mouseout", function() {
+						 			d3.select("#tooltip").classed("hidden", true);
+						 			d3.select(this).classed("active-node", false);
+						        });
+
+
+          d3.selectAll('#backbox')
+            .on("click", function() {
+              d3.select(".active-node").classed("active-node", false);
+              d3.select("#tooltip").classed("hidden", true);
+          });
+
+
+
+     function resizemap() {
+
+      width = parseInt(d3.select('#map').style('width')),
+      height = Math.round(width * mapRatio);
+
+
+     var projection = d3.geoMercator()
+              .scale(width * 113.9)
+              .center([-67.957,39.967])
+              .rotate([0,-13.19,0])
+              .translate([width/2, height/2]);
+
+       
+
+
+      //Define default path generator
+      var path = d3.geoPath().projection(projection);
+
+      d3.select("#map")
+            .attr("width", width)
+            .attr("height", height);
+
+      d3.select("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+      d3.select("#backbox")
+            .attr("width", width)
+            .attr("height", height);
+
+      d3.selectAll("g")
+            .attr("width", width)
+            .attr("height", height);
+
+
+      d3.selectAll(".ward")
+          .attr("d", path);
+
+      d3.selectAll('.scarboroughlabel')
+                  .attr("x", function (d) { return projection([-79.227722,43.766097])[0]; })
+                  .attr("y", function (d) { return projection([-79.227722,43.766097])[1]; }) 
+
+      d3.selectAll('.etobicokelabel')
+                .attr("x", function (d) { return projection([-79.545872,43.664813])[0]; })
+                  .attr("y", function (d) { return projection([-79.545872,43.664813])[1]; }) 
+
+      d3.selectAll('.downtownlabel')
+                  .attr("x", function (d) { return projection([-79.382080,43.659100])[0]; })
+                  .attr("y", function (d) { return projection([-79.382080,43.659100])[1]; }) 
+
+      d3.selectAll('.eastyorklabel')
+                  .attr("x", function (d) { return projection([-79.326359, 43.690753])[0]; })
+                  .attr("y", function (d) { return projection([-79.326359, 43.690753])[1]; }) 
+
+      d3.selectAll('.yorklabel')
+                  .attr("x", function (d) { return projection([-79.486996,43.687415])[0]; })
+                  .attr("y", function (d) { return projection([-79.486996,43.687415])[1]; }) 
+
+      d3.selectAll('.northyorklabel')
+                  .attr("x", function (d) { return projection([-79.435117, 43.766014])[0]; })
+                  .attr("y", function (d) { return projection([-79.435117, 43.766014])[1]; }) 
+     
+
+      }
+
+      d3.select(window).on('resize', resizemap);
+      d3.select(window).on('load', resizemap);
+
+
+
+
+	});
+});
+
+
+ function resize(){
+        var message = {'resize': 
+                  {
+                    'iframe':'torontoneighbourhoodiframe',
+                    'height': document.getElementsByClassName('torontoneighbourhoodmap')[0].offsetHeight + 4
+                  }
+                };
+       
+        parent.postMessage(message, "*");
+    };
+
+    window.addEventListener('load', function() {
+        resize();
+    });
+
+    window.addEventListener("resize", function(){
+        resize();
+    });
+
+
+document.addEventListener("touchstart", function(){}, true);
+
+</script>
+
+
+<!-- <style>#torontoneighbourhoodiframe{padding:0;width:100%;border:0;overflow:hidden;} </style><iframe id="torontoneighbourhoodiframe" src="https://misc.thestar.com/interactivegraphic/2021/01-january/xx-tps-twitter-map/twitter%20cloropleth%20map%20test/index.html" scrolling="no" height="1000"></iframe> -->
+
+</body>
+</html>

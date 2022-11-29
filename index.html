@@ -1,0 +1,3098 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toronto Star</title>
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"> 
+      <script src="https://misc.thestar.com/interactivegraphic/libraries/d3v4.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://misc.thestar.com/interactivegraphic/libraries/interactive-graphic-cta/cta-style.css">
+
+
+   <!-- <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">  -->
+
+  <!-- <link rel="stylesheet" id="themeCSS" href="jQ/jQRangeSlider-5.8.0//css/iThing.css">  -->
+
+  <script src="https://misc.thestar.com/interactivegraphic/libraries/d3v4.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script src="https://kit.fontawesome.com/3a966a89df.js" crossorigin="anonymous"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+
+
+
+   <script src="js/jquery-ui.min.js"></script>
+
+   <script src="jQ/jQRangeSlider-5.8.0/jQAllRangeSliders-min.js"></script>
+   <!-- <script src="jQ/jQRangeSlider-5.8.0/jQDateRangeSlider-min.js"></script> -->
+
+  <!-- <script defer src="fonts.js"></script> -->
+
+  <style> 
+
+  @font-face {
+    font-family: TorstarDeckCondensed;
+    src: url(https://misc.thestar.com/fonts/TorstarDeckCondensed-Semibold.otf);
+  }
+
+    body {
+      margin:0;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      background-color: #f8f8f8; 
+      /*padding: 0 25px 25px;*/
+
+    }
+
+     .clearfix:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+        }
+        
+    .clearfix {
+        display: block;
+        }
+
+.graphic-wrapper {
+  margin: 0 auto;
+  max-width: 1032px; 
+  padding-bottom: 16px;
+
+}
+
+.graphic-top {
+  padding: 8px 0;  
+  max-width: 600px;
+  margin:0 auto;}
+  @media (min-width: 526px) {
+    .graphic-top {
+      padding: 12px 0; } }
+  @media (min-width: 592px) {
+    .graphic-top {
+      padding: 16px 0; } }
+
+h2.graphic-top__graphic-hed {
+  margin: 0;
+  /*margin-bottom: 16px;*/
+  font-size: 20px;
+  line-height: 1.3em;
+  font-family: "TorstarDeckCondensed", Georgia, "Times New Roman", Times, serif;
+  color: #333;
+  /*text-align: center;*/
+  webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 4px; }
+  @media (min-width: 526px) {
+    h2.graphic-top__graphic-hed {
+      font-size: 22px;
+      /*margin-bottom: 20px;*/  } }
+  @media (min-width: 592px) {
+    h2.graphic-top__graphic-hed {
+      font-size: 24px;
+      /*margin-bottom: 24px;*/ } }
+
+h3.graphic-top__graphic-dek {
+  font-size: 12px;
+  line-height: 1.3em;
+  font-weight: 400;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #666;
+  webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 4px; }
+  @media (min-width: 526px) {
+    h3.graphic-top__graphic-dek {
+      font-size: 14px; } }
+  @media (min-width: 592px) {
+    h3.graphic-top__graphic-dek {
+      font-size: 16px; } }
+   
+
+
+  .graphic-top__graphic-instructions {
+    margin:4px 0 0; 
+  max-width: 600px;
+  margin:0 auto;
+    font-size: 12px;
+    line-height: 1.2em;
+    font-weight: 400;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    color: #999;
+    font-style: italic; }
+    @media (min-width: 620px) {
+      .graphic-top__graphic-instructions {
+        font-size: 13px; } }
+    @media (min-width: 849px) {
+      .graphic-top__graphic-instructions {
+        font-size: 14px; } }
+    .graphic-top__graphic-instructions__desktopspan {
+      display: none;
+    }
+     @media (min-width: 849px) {
+       .graphic-top__graphic-instructions__desktopspan {
+        display: inline; }
+         .graphic-top__graphic-instructions__mobilespan {
+        display: none; } 
+
+
+      }
+
+.graphic-bottom {
+  margin: 0 0 0; 
+  max-width: 600px;
+  margin:0 auto;
+  padding: 6px 0 16px;
+  border-top: 1px solid #cfcfcf; }
+  .graphic-bottom:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0; }
+  @media (min-width: 526px) {
+    .graphic-bottom {
+      padding-top: 7px; } }
+  @media (min-width: 592px) {
+    .graphic-bottom {
+      padding-top: 8px; } }
+
+p.graphic-bottom__graphic-source {
+  margin: 0;
+  padding-bottom: 5px;
+  font-size: 12px;
+  line-height: 1.3em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #707070;
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase; }
+  @media (min-width: 526px) {
+    p.graphic-bottom__graphic-source {
+      max-width: 65%;
+      vertical-align: top;
+      float: left; } }
+p.graphic-bottom__graphic-byline {
+  margin: 0;
+  padding-bottom: 5px;
+  font-size: 12px;
+  line-height: 1.3em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  color: #707070;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility; }
+  @media (min-width: 526px) {
+    p.graphic-bottom__graphic-byline {
+      text-align: right;
+      max-width: 50%;
+      vertical-align: top;
+      float: right; } }
+p.graphic-bottom__notetext {
+  margin: 0;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.1em;
+  padding:5px 0 4px;
+  color: #999;
+  float: right; 
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeLegibility; }
+  @media (min-width: 526px) {
+    p.graphic-bottom__notetext {
+      font-size: 14px;
+      line-height: 14px } }
+  @media (min-width: 592px) {
+    p.graphic-bottom__notetext {
+      font-size: 14px; } }
+  @media (min-width: 620px) {
+    p.graphic-bottom__notetext {
+      float: right; } }
+
+  .graphic-bottom__notetext p{
+    margin: 2px;
+  }
+
+  .graphic-legend, .instructions {
+  text-align: left;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  padding: 5px 0 10px; 
+  display:flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+  .graphic-legend__legendtext{
+    white-space: nowrap;
+    cursor: pointer;
+    margin-right: 6px;
+    margin-bottom: 5px;
+    vertical-align: top;
+    flex-basis: 14%;
+    display: inline-block;
+    padding: 5px;
+    /*background: #CCCCCC;*/
+    /*border: 2px solid #939393;*/
+    border-radius: 3px}
+    @media (min-width: 663px) {
+      .graphic-legend__legendtext {
+         margin-right: 12px; 
+         } }
+    .graphic-legend__legendtext__box {
+      width: 15px;
+      height: 15px;
+      /*float: left;*/
+      border-radius: 15px; }
+    .graphic-legend__legendtext__text {
+      text-align: center;
+      margin: 0;
+      font-size: 16px;
+      line-height: 15px;
+      /*padding-left: 18px;*/
+      color: #404040;
+      padding-top: 1px; }
+       @media (min-width: 663px) {
+      .graphic-legend__legendtext__text {
+       /*padding-left: 20px;*/
+        } }
+
+        /*.graphic-legend__legendtext:hover{
+            color: #CCCCCC;
+            background: #404040;
+        }*/
+
+        .graphic-legend__legendtext:hover > .graphic-legend__legendtext__text{
+            color: #fe862a47;
+            /*background: #404040;*/
+        }
+
+        .activelegend:hover > .graphic-legend__legendtext__text{
+            color: #fe862a;
+            /*background: #404040;*/
+        }
+
+        #resetButton:hover, #pauseButton:hover, #endButton:hover {
+            color: #FE862A;
+            /*background: #404040;*/
+        }
+
+        #pauseButton, #fforwButton{
+          /*display: none;*/
+        }
+
+  button {
+    display: inline-block;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #ddd;
+        background: #00000005;
+        padding: 4px 12px;
+        flex-basis: auto;
+        color: #000;
+        margin: 0 !important;
+        cursor: pointer;
+        transition: 0.2s all;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        min-height: 37px;
+        font-size: 13px;
+  }
+
+
+  button:hover {
+      background: #fe862a47;
+      color: #fe862a;
+      /*background: #404040;*/
+  }
+
+
+
+
+  .bottomLegend__wrapper {
+    text-align: left;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    padding: 0; 
+    margin: 15px 0;
+    display:flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .bottomLegend__legendtext {
+    white-space: nowrap;
+    cursor: pointer;
+    margin-right: 5px;
+    /*margin-bottom: 5px;*/
+    vertical-align: top;
+    /*flex-basis: 22%;*/
+    display: inline-block;
+    padding: 5px;
+    /*background: #F8F8F8;*/
+    /*border: 2px solid tomato;*/
+    border-radius: 3px
+  }
+
+  #legendtext1.bottomLegend__legendtext{
+    padding-left: 0;
+  }
+
+    @media (min-width: 663px) {
+    
+  .bottomLegend__legendtext {
+         /*margin-right: 12px; */
+         } 
+       }
+    
+  .bottomLegend__legendtext__box {
+      width: 15px;
+      height: 15px;
+      float: left;
+      border-radius: 15px; }
+    
+  .bottomLegend__legendtext__text, .map-legend-wrapper {
+      text-align: left;
+      margin: 0;
+      font-size: 16px;
+      line-height: 15px;
+      padding-left: 18px;
+      color: #404040;
+      padding-top: 1px; }
+
+  #eventInfo{
+      flex-basis: 99%
+  }
+
+  .legendSizes{
+    float:right;
+  }
+
+  #eventInfo p {
+      padding-left: 0;
+  }
+
+  p.instructions {
+    margin-right:8px;
+  }
+
+  @media (min-width: 663px) {
+      
+      #eventInfo, .map-legend-wrapper {
+        padding-left: 0;
+      } 
+
+      #eventInfo .bottomLegend__legendtext__text, .map-legend-wrapper{
+          padding-left: 0;
+      }
+        
+      .bottomLegend__legendtext__text {
+           /*padding-left: 20px;*/
+        } 
+  }
+
+  #desktopDashboard, #mobileDashboard{
+    display:none;
+    /*display:block;*/
+  }
+
+  #mobileDashboard {
+    border-top: 1px solid #CFCFCF;
+    padding-top: 6px;
+  }
+
+
+  .map-legend-wrapper {
+    text-align: left;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    padding: 0; 
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .map-legend-wrapper .legendSizes-container{
+    display:flex;
+    /*flex-wrap: nowrap;*/
+
+  }
+
+  #legendcircle-Hollow{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 3px solid #6197ed;
+  }
+
+  .legendHollow {
+    display: flex;
+  }
+
+  .map-legend-wrapper .legendHollow {
+    margin-left:0;
+  }
+
+  .legendHollow p {
+    /*float: right;*/
+    margin: 2px 0 0 0;
+  }
+
+  .makeBold{
+    font-weight: 600;
+  }
+
+  .legendSizes p, 
+  .legendcircle,
+  .legendHollow,
+  .legendStroke {
+    margin: auto 4px;
+  }
+
+  #legendcircle-large {
+    height: 50px;
+    width: 50px;
+    /*margin-top:15px;*/
+  }
+
+  #legendcircle-med {
+    height: 25px;
+    width: 25px;
+    /*margin:auto;*/
+  }
+
+  #legendcircle-small {
+    height: 5px;
+    width: 5px;
+    /*margin-top:25px;*/
+  }
+
+  .legendcircle {
+    border-radius: 50%;
+    background: #CCCCCC;
+    vertical-align: baseline;
+    margin-right: 10px;
+    margin-left: 2px;
+  }
+
+  .legendSizes .legendSizes-title{
+   /*flex-basis: 20%;*/
+   padding-top: 12px;
+ }
+
+
+
+    .map-wrapper {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      height: 650px;
+    }
+
+    #map {
+      position: absolute;
+      top:0;
+      bottom:0; 
+      width: 100%;
+      height: 100%;
+    }
+
+    .mapboxgl-ctrl-compass {
+      display: none !important;
+    }
+
+    .location {
+      stroke: #fff;
+      cursor: pointer;
+      stroke-width: 1px;
+    }
+
+    .labels {
+      fill: #000;
+      font-size: 8px;
+    }
+
+    .active-node {
+      stroke: #000;
+      stroke-width: 3px;
+    }
+
+    .instructions{
+      margin:0;
+      /*flex-grow: 1;*/
+      flex-basis: 15%;
+      padding: 5px 0 5px 0;
+      white-space: nowrap;
+    }
+
+    .manuallyadded {
+      max-width: 600px;
+      margin:0 auto;
+    }
+
+    .manual-cicle{
+      display: inline-block;
+      border-radius: 50%;
+      border: 2px solid #0077BB;
+      background-color: rgb(255,20,0);
+      height: 10px;
+      width: 10px;
+    }
+
+/* ------------------------------------------------------------------------------------------------------------   PLAYERBOX   */
+
+#playerbox {
+    position: absolute;
+    height: auto;
+    z-index: 100;
+    pointer-events: auto;
+    left: 10px;
+    top: 10px;
+    padding: 5px;
+    /*top: auto;*/
+    /*width: 100%;*/
+    color: #F8F8F8;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+
+    /*display:flex;*/
+
+    background: rgba(0,0,0,0.4);
+    border: 1px solid #F8F8F8;
+    border-radius: 6px;
+    color: #F5F5F5;
+    max-width: 300px;
+}
+  #playerbox .fas, #playerbox .far, #playerbox .fa{
+    font-size: 24px;
+  }
+
+.playerButtonBox{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+#playerbox p {
+  margin: 3px 2px 0;
+  white-space: nowrap;
+  padding-right: 6px;
+}
+
+#playerbox #endButton p {
+  padding-right: 0;
+}
+
+@media (max-width: 526px) {
+  #playerbox {
+    font-size: 12px;
+    display: block;
+  }
+  #playerbox .fas, #playerbox .far, #playerbox .fa{
+    font-size: 18px;
+  }
+
+  #playerbox p {
+    padding-right: 0;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------------------   TOOLTIP   */
+
+#tooltip {
+    position: absolute;
+    height: auto;
+    z-index: 100;
+    pointer-events: auto;
+    right: 10px;
+    bottom: 30px;
+    top: auto;
+    /*width: 100%;*/
+    color: #404040;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+
+    visibility: hidden;
+}
+
+
+.hidden, .yearhidden {
+    display: none;
+    pointer-events: none !important;
+}
+
+#tooltip #closebutton {
+  float: right;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
+  /*display: none;*/
+}
+
+#tooltip #closebutton .icon {
+   position: absolute;
+   top: 10px;
+   right: -5px;
+   transform: translate(-50%,-50%);
+   color: #404040;
+
+}
+
+@media (max-width: 620px){
+  #tooltip #closebutton .icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    /*transform: translate(-50%,-50%);*/
+    /*color: #F8F8F8;*/
+  }
+}
+
+@media (max-width: 526px){
+  #tooltip #closebutton .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /*transform: translate(-50%,-50%);*/
+    /*color: #F8F8F8;*/
+  }
+}
+
+#tooltip p {
+    margin: 0;
+}
+
+.tooltip-container {
+  padding: 15px;
+  min-height: 70px;
+}
+
+#legendtext1 #total-incidents {
+  /*background-color: #ff6f00;*/
+      
+      width: 5px;
+      height: 5px;
+      float: left;
+      border-radius: 15px; 
+      margin-top: 5px;
+}
+
+#legendtext1 .bottomLegend__legendtext__text {
+  padding-left: 0;
+}
+
+#total-no-injury {
+  background-color: #fcba03;
+}
+
+#total-injuries {
+  background-color: #ff6f00;
+}
+
+#total-deaths {
+  background-color: #ff1400;
+}
+
+
+p.type {
+  padding-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.1em;
+  display: inline-block;
+  padding-left: 1px;
+}
+
+p.type:after {
+  content: "|";
+  padding: 0 7px;
+}
+
+
+p.date {
+  padding-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.1em;
+  display: inline-block;
+}
+
+p.location {
+  font-size: 20px;
+  line-height: 1.3em;
+  padding-bottom: 2px;
+}
+
+
+p.description {
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+a.link {
+  margin-top: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+}
+
+a.link:hover {
+  opacity: 0.9;
+}
+
+.icon {
+  position: relative;
+}
+
+.dashboard-conainer {
+  display:flex;
+  width: :100%;
+}
+
+.tweetbox {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #404040;
+  font: normal normal 16px/1.4 Helvetica,Roboto,"Segoe UI",Calibri,sans-serif;
+  color: #404040;
+  max-width: 300px;
+}
+
+.tweetbox, .databox {
+  width: 500px;
+  margin: 10px 0 0;
+  padding: 20px;
+  border-radius: 7px;
+}
+
+.tweetHead .tweetAvatar{
+  border-radius: 50%;
+  float:left;
+  margin-right: 10px;
+  width: 36px;
+  height: 36px;
+  padding-top: 4px
+}
+
+span .verifiedIcon {
+  display: inline;
+  vertical-align: text-top;
+}
+
+span .verifiedIcon img{
+  max-width: 16px;
+}
+
+.tweetHead h2 {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.tweetHead h3 {
+  font-weight: 300;
+  color: #5f666a;
+  font-size: 14px;
+  margin: 0;
+}
+
+.account-name {
+  margin:0;
+}
+
+.heartIcon{
+  background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20class%3D%22icon%22%20fill%3D%22%238899a6%22%20d%3D%22M12%2021.638h-.014C9.403%2021.59%201.95%2014.856%201.95%208.478c0-3.064%202.525-5.754%205.403-5.754%202.29%200%203.83%201.58%204.646%202.73.813-1.148%202.353-2.73%204.644-2.73%202.88%200%205.404%202.69%205.404%205.755%200%206.375-7.454%2013.11-10.037%2013.156H12zM7.354%204.225c-2.08%200-3.903%201.988-3.903%204.255%200%205.74%207.035%2011.596%208.55%2011.658%201.52-.062%208.55-5.917%208.55-11.658%200-2.267-1.822-4.255-3.902-4.255-2.528%200-3.94%202.936-3.952%202.965-.23.562-1.156.562-1.387%200-.015-.03-1.426-2.965-3.955-2.965z%22%2F%3E%3C%2Fsvg%3E);
+    display: inline-block;
+    height: 1.25em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: text-bottom;
+    width: 25px;
+    color: #8899a6;
+}
+
+.tweeterIcon{
+  background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2072%2072%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h72v72H0z%22%2F%3E%3Cpath%20class%3D%22icon%22%20fill%3D%22%231da1f2%22%20d%3D%22M68.812%2015.14c-2.348%201.04-4.87%201.744-7.52%202.06%202.704-1.62%204.78-4.186%205.757-7.243-2.53%201.5-5.33%202.592-8.314%203.176C56.35%2010.59%2052.948%209%2049.182%209c-7.23%200-13.092%205.86-13.092%2013.093%200%201.026.118%202.02.338%202.98C25.543%2024.527%2015.9%2019.318%209.44%2011.396c-1.125%201.936-1.77%204.184-1.77%206.58%200%204.543%202.312%208.552%205.824%2010.9-2.146-.07-4.165-.658-5.93-1.64-.002.056-.002.11-.002.163%200%206.345%204.513%2011.638%2010.504%2012.84-1.1.298-2.256.457-3.45.457-.845%200-1.666-.078-2.464-.23%201.667%205.2%206.5%208.985%2012.23%209.09-4.482%203.51-10.13%205.605-16.26%205.605-1.055%200-2.096-.06-3.122-.184%205.794%203.717%2012.676%205.882%2020.067%205.882%2024.083%200%2037.25-19.95%2037.25-37.25%200-.565-.013-1.133-.038-1.693%202.558-1.847%204.778-4.15%206.532-6.774z%22%2F%3E%3C%2Fsvg%3E);
+    display: inline-block;
+    height: 1.25em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: text-bottom;
+    width:100%;
+}
+
+.tweeterLogo {
+    float: right;
+    width: 25px;
+}
+
+.tweetInfo {
+    color: #8899a6;
+}
+
+.dashboard-conainer .tweetbox {
+  display: none;
+}
+@media (max-width: 620px) { 
+    .tweetbox, .databox{
+      width: 100%;
+      /*left:0;*/
+    }
+    #tooltip {
+      width: 100%;
+      left:0;
+      bottom:0;
+      visibility: hidden;
+    } 
+    .tweetbox{
+      max-width: none;
+      background: #000000;
+      font-size: 13px;
+      line-height: 16px;
+      padding: 10px;
+      width: inherit;
+    }
+}
+
+@media (max-width: 592px) {
+    .dashboard-conainer .tweetbox {
+        /*display: block;*/
+    } 
+    #tooltip {
+      width: 100%;
+      /*left:0;*/
+      margin:auto;
+    } 
+    #tooltip .tweetbox {
+        /*display: none;*/
+    } 
+    .tweetbox, .databox{
+      /*width: 100%;*/
+      left:0;
+
+    }
+    .tweetbox {
+      max-width: none;
+      background: #000000;
+      font-size: 14px;
+      line-height: 18px;
+      /*max-width:91%;*/
+    }
+
+    .tweetHead h2{
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 0;
+      line-height: 17px;
+    }
+
+    .tweetHead h3{
+      font-size: 12px;
+    }
+}
+
+
+/*END OF TOOLTIP*/
+
+
+
+.filtered-out {
+  /*opacity: 0.3;*/
+}
+
+.activelegend {
+  opacity: 1;
+  /*background: #FE862A;*/
+  background: #fe862a47;
+  /*color: #F8F8F8;*/
+}
+
+.activelegend p{
+  color: #FE862A;
+}
+
+
+span.totalnumber {
+  font-weight: 800;
+}
+
+
+
+/* Button styling */
+
+.yearbuttonbox {
+  margin-bottom: 12px;
+  height: 30px;
+
+}
+
+.yearbuttonboxlabel {
+    display: inline-block;
+    margin-right: 8px;
+    line-height: 30px;
+}
+
+.yearbutton {
+  margin-right: 10px;
+  padding: 5px;
+  color: #404040;
+  border: 1px solid #666666;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 16px;
+  font-size: 14px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+}
+
+.bottomLegend{
+  /*display: flex;*/
+  margin-top: 12px;
+
+  line-height: 14px;
+  font-size: 1.4em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+
+}
+
+.bottomLegendContainers{
+  float:left;
+  margin-right: 6px;
+  /*flex-basis: 20%;*/
+  padding: 0;
+}
+
+
+.graphic-legend {
+  margin: 0;
+}
+
+.graphic-legend.range-info{
+  max-width: 795px;
+  border-right: 1px solid #CCCCCC;
+}
+
+@media (max-width: 592px){
+  .graphic-legend.range-info {
+    border-right: none;
+  }
+}
+
+#smallCircle {
+  margin-top: 8px;
+  margin-right: 5px;
+  float: left;
+  width: 8px;
+  height: 8px;
+  background: #777;
+  border-radius: 50%
+}
+
+#largeCircle {
+  margin-top: 3px;
+  margin-right: 5px;
+  float: left;
+  width: 16px;
+  height: 16px;
+  background: #777;
+  border-radius: 50%
+}
+
+
+.buttonbox {
+  text-align: center;
+  width: 180px;
+  height: 22px;
+  margin: 0 auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #444;
+  margin-bottom: 10px;
+}
+
+.buttonside {
+  background: none;
+  width: 90px;
+  height: 22px;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+.buttonside p {
+  margin: 0;
+  line-height: 22px;
+  font-size: 13px;
+  color: #444;
+}
+
+.active p {
+  color: white;
+  -webkit-transition-delay: 0.3s; /* Safari */
+    transition-delay: 0.3s;
+}
+
+#buttonside1 {
+  float: left;
+}
+
+#buttonside2 {
+  float: right;
+}
+
+#switchcover {
+  background-color: #444;
+  width: 90px;
+  height: 22px;
+  z-index: 2;
+  position: absolute;
+}
+
+.right {
+  margin-left: 90px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s; /* Safari 3.1 to 6.0 */
+}
+
+.left {
+  margin-left: 0px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s; /* Safari 3.1 to 6.0 */
+}
+
+@media (max-width: 388px) {
+  .bottomLegendContainers{
+    flex-basis: 40%;
+  }
+
+  .bottomLegend{
+    line-height: 22px;
+    font-size: 1.2em;
+  }
+  
+  .leader-photo{
+    margin-bottom: 0;
+    float: none;
+  }
+}
+
+
+@media (max-width: 620px) {
+  .bottomLegend {
+    flex-direction: column;
+  }
+
+  .bottomLegendContainers{
+    flex-basis: 30%;
+  }
+
+  .map-wrapper {
+      height: 300px;
+  }
+
+  #tooltip {
+    pointer-events: auto;
+  }
+
+  #tooltip #closebutton {
+    display: block;
+  }
+
+  p.type {
+  padding-bottom: 3px;
+  font-size: 12px;
+  }
+
+  p.type:after {
+    padding: 0 6px;
+  }
+
+
+  p.date {
+    padding-bottom: 3px;
+    font-size: 12px;
+  }
+
+  p.location {
+    font-size: 18px;
+    padding-bottom: 2px;
+  }
+
+
+  p.description {
+    font-size: 15px;
+  }
+
+  .tooltip-container {
+    padding: 10px;
+  }
+
+
+a.link {
+  margin-top: 8px;
+  padding-bottom: 1px;
+}
+ 
+
+}
+
+/*---------------------------------------------------------START of on/off switch-------------*/
+    
+    .switchContainer{
+      float: right;
+      padding: 0;
+      margin: 0;
+    }
+
+    .linesLabel{
+      float: right;
+      margin-right: 5px;
+      padding-top: 3px;
+    }
+
+    .onoffswitch {
+        position: relative; 
+        width: 60px;
+        -webkit-user-select:none; 
+        -moz-user-select:none; 
+        -ms-user-select: none;
+        float: right;
+    }
+    .onoffswitch-checkbox {
+        display: none;
+    }
+    .onoffswitch-label {
+        display: block; 
+        overflow: hidden; 
+        cursor: pointer;
+        border: 2px solid #999999; 
+        border-radius: 20px;
+    }
+    .onoffswitch-inner {
+        display: block; 
+        width: 200%; 
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+        display: block; 
+        float: left; 
+        width: 50%; 
+        height: 20px; 
+        padding: 0; 
+        line-height: 22px;
+        font-size: 14px; 
+        color: #f8f8f8; 
+        box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+        content: "ON";
+        padding-left: 10px;
+        background-color: #CAD2D3; 
+        color: #404040;
+    }
+    .onoffswitch-inner:after {
+        content: "OFF";
+        padding-right: 10px;
+        background-color: #EEEEEE; 
+        color: #404040;
+        text-align: right;
+    }
+    .onoffswitch-switch {
+        display: block; 
+        width: 10px; 
+        margin: 6px;
+        background: #f8f8f8;
+        position: absolute; 
+        top: 0; 
+        bottom: 0;
+        right: 36px;
+        border: 2px solid #f8f8f8; 
+        border-radius: 20px;
+        transition: all 0.3s ease-in 0s; 
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px; 
+    }
+
+    @media (max-width: 388px){
+      .switchContainer{
+        float: none;
+      }
+
+      .onoffswitch, .linesLabel{
+        float:left;
+      }
+
+      .linesLabel{
+        text-align: left;
+        padding-left: 5px;
+      }
+    }
+
+
+/*--------------------------------------------------------- END of on/off switch-------------*/
+
+
+/*----------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------------------- --------------------------------------------------------- START SLIDER --------------*/
+.sliderContainer{
+  /*margin: 20px auto;*/
+  width:100%;
+}
+
+
+#date_range_slider {
+  margin: 0 0 5px;
+  /*color: #000000;*/
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  /*font-size: 14px;*/
+  /*border: 1px solid red;*/
+  /*height: 50px;*/
+}
+/**
+ * Theme for jQRangeSlider
+ * Inspired by http://cssdeck.com/item/381/itunes-10-storage-bar
+ *        and http://cssdeck.com/item/276/pure-css-arrow-with-border-tooltip
+ */
+
+.ui-rangeSlider{
+  height: 30px;
+  padding-top: 10px;
+}
+
+.ui-rangeSlider,
+.ui-rangeSlider-container,
+.ui-rangeSlider-arrow{
+  -webkit-box-sizing:content-box;
+     -moz-box-sizing:content-box;
+          box-sizing:content-box;
+}
+
+.ui-rangeSlider-withArrows .ui-rangeSlider-container{
+  margin: 0 15px;
+}
+
+.ui-rangeSlider-withArrows .ui-rangeSlider-container,
+.ui-rangeSlider-noArrow .ui-rangeSlider-container,
+.ui-rangeSlider-arrow{
+  /*-webkit-box-shadow: inset 0px 4px 6px -2px RGBA(0,0,0,0.5);*/
+     /*-moz-box-shadow: inset 0px 4px 6px -2px RGBA(0,0,0,0.5);*/
+          /*box-shadow: inset 0px 4px 6px -2px RGBA(0,0,0,0.5);*/
+}
+
+.ui-rangeSlider-disabled.ui-rangeSlider-withArrows .ui-rangeSlider-container,
+.ui-rangeSlider-disabled.ui-rangeSlider-noArrow .ui-rangeSlider-container,
+.ui-rangeSlider-disabled .ui-rangeSlider-arrow{
+  /*-webkit-box-shadow: inset 0px 4px 6px -2px RGBA(0,0,0,0.3);*/
+     /*-moz-box-shadow: inset 0px 4px 6px -2px RGBA(0,0,0,0.3);*/
+          /*box-shadow: inset 0px 4px 6px -2px RGBA(0,0,0,0.3);*/
+}
+
+.ui-rangeSlider-noArrow .ui-rangeSlider-container{
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  /*border-left: 4px solid #CCCCCC;*/
+  /*border-right: 4px solid  #CCCCCC*/
+}
+
+.ui-rangeSlider-disabled.ui-rangeSlider-noArrow .ui-rangeSlider-container{
+  border-color: #8490a3;
+}
+
+.ui-rangeSlider-container,
+.ui-rangeSlider-arrow{
+  height: 30px;
+
+  /*border-top: solid 1px #232a32;*/
+  /*border-bottom: solid 1px #6a7179;*/
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-container,
+.ui-rangeSlider-disabled .ui-rangeSlider-arrow{
+  border-top-color: #49576b;
+  border-bottom-color: #9ca7b3;
+}
+
+.ui-rangeSlider-container,
+.ui-rangeSlider-arrow{
+  /*background: #CCCCCC;*/
+  /*background: -moz-linear-gradient(top, #67707F 0%, #888DA0 100%);*/
+  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#67707F), color-stop(100%,#888DA0));*/
+}
+
+.ui-rangeSlider-label{
+  background: #939393;
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-container,
+.ui-rangeSlider-disabled .ui-rangeSlider-arrow,
+.ui-rangeSlider-disabled .ui-rangeSlider-label{
+  background: #95a4bd;
+  /*background: -moz-linear-gradient(top, #95a4bd 0%, #b2bbd8 100%);*/
+  /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#95a4bd), color-stop(100%,#b2bbd8));*/
+}
+
+.ui-rangeSlider-arrow{
+  width:14px;
+  cursor:pointer;
+}
+
+.ui-rangeSlider-leftArrow{
+  border-radius:4px 0 0 4px;
+  /*border-left: solid 1px #515862;*/
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-leftArrow{
+ border-left-color: #8792a2; 
+}
+
+.ui-rangeSlider-rightArrow{
+  border-radius:0 4px 4px 0;
+  /*border-right: solid 1px #515862;*/
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-rightArrow{
+ border-right-color: #8792a2; 
+}
+
+.ui-rangeSlider-arrow-inner{
+  position: absolute;
+  top: 50%;
+  border: 10px solid transparent;
+  width:0;
+  height:0;
+
+  margin-top: -8px;
+}
+
+.ui-rangeSlider-leftArrow .ui-rangeSlider-arrow-inner{
+  border-right:10px solid #a4a8b7;
+  left: 0;
+  margin-left: -8px;
+}
+
+.ui-rangeSlider-leftArrow:hover .ui-rangeSlider-arrow-inner{
+  border-right:10px solid #b3b6c2;
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-leftArrow .ui-rangeSlider-arrow-inner,
+.ui-rangeSlider-disabled .ui-rangeSlider-leftArrow:hover .ui-rangeSlider-arrow-inner{
+  border-right-color: #bbc0cf;
+}
+
+.ui-rangeSlider-rightArrow .ui-rangeSlider-arrow-inner{
+  border-left:10px solid #a4a8b7;
+  right: 0;
+  margin-right: -8px;
+}
+
+.ui-rangeSlider-rightArrow:hover .ui-rangeSlider-arrow-inner{
+  border-left:10px solid #b3b6c2;
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-rightArrow .ui-rangeSlider-arrow-inner,
+.ui-rangeSlider-disabled .ui-rangeSlider-rightArrow:hover .ui-rangeSlider-arrow-inner{
+  border-left-color: #bbc0cf;
+}
+
+.ui-rangeSlider-innerBar{
+  width: 110%;
+  height: 1px;
+  left: -10px;
+  overflow: hidden;
+  background: #CCCCCC;
+}
+
+.ui-rangeSlider-bar{
+  background: #DFB99B;
+  height: 5px;
+  margin:13px 0;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  cursor:move;
+  cursor:grab;
+  cursor: -moz-grab;
+  
+  /*-webkit-box-shadow: inset 0 2px 6px RGBA(0,0,0,0.5);
+     -moz-box-shadow: inset 0 2px 6px RGBA(0,0,0,0.5);
+          box-shadow: inset 0 2px 6px RGBA(0,0,0,0.5);*/
+}
+
+.ui-rangeSlider-bar:hover, .ui-rangeSlider-handle:hover{
+  background: #E1A67F;
+  
+  /*-webkit-box-shadow: inset 0 2px 6px RGBA(0,0,0,0.5);
+     -moz-box-shadow: inset 0 2px 6px RGBA(0,0,0,0.5);
+          box-shadow: inset 0 2px 6px RGBA(0,0,0,0.5);*/
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-bar{
+  background: #93aeca;
+
+/*  -webkit-box-shadow: inset 0 2px 6px RGBA(0,0,0,0.3);
+     -moz-box-shadow: inset 0 2px 6px RGBA(0,0,0,0.3);
+          box-shadow: inset 0 2px 6px RGBA(0,0,0,0.3);*/
+}
+
+.ui-rangeSlider-handle{
+  width:30px;
+  height:30px;
+  background: #FE862A;
+  cursor:col-resize;
+  border-radius: 50%;
+}
+
+.ui-rangeSlider-label{
+  padding: 5px 10px;
+  bottom:40px;
+
+  -moz-border-radius: 4px;
+       border-radius: 4px;
+
+/*  -webkit-box-shadow: 0px 1px 0px #c2c5d6;
+     -moz-box-shadow: 0px 1px 0px #c2c5d6;
+          box-shadow: 0px 1px 0px #c2c5d6;*/
+
+  color:white;
+  font-size:15px;
+
+  cursor:col-resize;
+}
+
+.ui-rangeSlider-label-inner{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  display: block;
+  z-index:99;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  margin-left: -10px;
+  border-top: 10px solid #888DA0;
+}
+
+.ui-rangeSlider-disabled .ui-rangeSlider-label-inner{
+  border-top-color: #b2bbd8; 
+}
+
+.ui-editRangeSlider-inputValue{
+  width:2em;
+  text-align:center;
+  font-size:15px;
+}
+
+.ui-rangeSlider .ui-ruler-scale{
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+}
+
+.ui-rangeSlider .ui-ruler-tick { 
+  float: left; 
+}
+
+.ui-rangeSlider .ui-ruler-scale0 .ui-ruler-tick-inner{
+  color:white;
+  margin-top:1px;
+  border-left: 1px solid white;
+  height:29px;
+  padding-left:2px;
+  position:relative;
+}
+
+.ui-rangeSlider .ui-ruler-scale0 .ui-ruler-tick-label{
+  position:absolute;
+  bottom: 6px;
+}
+
+.ui-rangeSlider .ui-ruler-scale1 .ui-ruler-tick-inner{
+  border-left:1px solid white;
+  margin-top: 25px;
+  height: 5px;
+}
+
+
+
+.ui-rangeSlider-label{
+  display:none !important;
+}
+
+.ui-rangeSlider-innerBar{
+  top: 16px !important;
+}
+
+.slider-range p {
+  margin: 10px 0 0;
+}
+
+.slider-range span {
+  font-weight: 600;
+}
+
+
+@media (max-width: 414px){
+
+  #date_range_slider {
+    /*border: 1px solid red;*/
+    height: 30px;
+  }
+
+  #date_range_slider .ui-rangeSlider-container {
+    height: 30px;
+  }
+  #date_range_slider .ui-rangeSlider-innerBar {
+    background: tomato;
+    background: #CCCCCC;
+    height: 3px;
+  }
+  #date_range_slider .ui-rangeSlider-bar {
+    background: #DFB99B;
+    height: 8px;
+    margin: 12px 0;
+  }
+  #date_range_slider .ui-rangeSlider-arrow {
+    background: #939393;
+    height: 100%;
+    width: 3px;
+  }
+  #date_range_slider .ui-rangeSlider-handle {
+    background: #FE862A;
+    height: 100%;
+    width: 30px;
+    border-radius: 15px;
+    /*z-index: 100;*/
+  }
+
+}
+
+
+
+
+
+/*.ui-rangeSlider .ui-rangeSlider-label {
+  bottom: 35px;
+  color: #fff;
+  background: #0578c1;
+  padding: 11px;
+  font: bold 12px/1 arial;
+}
+.ui-rangeSlider .ui-rangeSlider-handle {
+  background: #04598f;
+}
+.ui-rangeSlider .ui-rangeSlider-bar {
+  background: #0578c1;
+  height: 20px;
+}
+.ui-rangeSlider .ui-rangeSlider-innerBar {
+  background: transparent;
+  height: 20px;
+}*/
+
+/*--------------------------------------------------------- END SLIDER ----------------*/
+
+
+/*--------------------------------------------------------- START blurry test-------------*/
+
+.blurry {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+}
+
+
+
+</style>
+</head>
+
+<body>
+  <div class="graphic-wrapper tpstwittermap-wrapper">
+      <div class="graphic-top">
+        <h2 class="graphic-top__graphic-hed">A year in Toronto police gun violence tweets</h2>
+        <h3 class="graphic-top__graphic-dek">Not every police notice is another victim, but sounds of gunshots and sirens have an impact too. Here’s every Toronto police tweet about gun violence in 2020.</h3>
+
+        <span class="interactive-graphic-cta interactive-graphic-cta__desktop"><img height="23px" class="interactive-graphic-cta-image" src="https://misc.thestar.com/interactivegraphic/libraries/interactive-graphic-cta/SVG/Hover.svg">Hover on circles on the map to show each tweet. </span><span class="interactive-graphic-cta interactive-graphic-cta__mobile"><img height="23px" class="interactive-graphic-cta-image" src="https://misc.thestar.com/interactivegraphic/libraries/interactive-graphic-cta/SVG/Tap.svg">Tap on circles on the map to show each tweet. </span><span class="interactive-graphic-cta interactive-graphic-cta__desktop"><img height="23px" class="interactive-graphic-cta-image" src="https://misc.thestar.com/interactivegraphic/libraries/interactive-graphic-cta/SVG/Tap.svg">Click on the legend to filter.</span><span class="interactive-graphic-cta interactive-graphic-cta__mobile"><img height="23px" class="interactive-graphic-cta-image" src="https://misc.thestar.com/interactivegraphic/libraries/interactive-graphic-cta/SVG/Tap.svg">Tap on the legend to filter.</span>
+
+      </div>
+
+      <div id="desktopDashboard">
+              <div><p class="instructions">Filter by month</p></div>
+         <div class="graphic-legend clearfix">
+            
+            <!-- <div class="legendSub-group"> -->
+              <button class="graphic-legend__legendtext activelegend" id="legendtextMonthAll" data-year="All">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+                <p class="graphic-legend__legendtext__text">Display all</p>
+              </button>
+            <!-- </div> -->
+
+            <!-- <div class="legendSub-group"> -->
+              <button class="graphic-legend__legendtext" id="legendtextMonthJan" data-year="0">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-incidents" ></button> -->
+                <p class="graphic-legend__legendtext__text">Jan</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthFeb" data-year="1">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-no-injury"  ></button> -->
+                <p class="graphic-legend__legendtext__text">Feb</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthMar" data-year="2">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-injuries" ></button> -->
+                <p class="graphic-legend__legendtext__text">Mar</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthApr" data-year="3">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+                <p class="graphic-legend__legendtext__text">Apr</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthMay" data-year="4">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-incidents" ></button> -->
+                <p class="graphic-legend__legendtext__text">May</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthJun" data-year="5">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-no-injury"  ></button> -->
+                <p class="graphic-legend__legendtext__text">Jun</p>
+              </button>
+            <!-- </button> -->
+
+            <!-- <button class="legendSub-group"> -->
+              <button class="graphic-legend__legendtext" id="legendtextMonthJul" data-year="6">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-injuries" ></button> -->
+                <p class="graphic-legend__legendtext__text">Jul</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthAug" data-year="7">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+                <p class="graphic-legend__legendtext__text">Aug</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthSep" data-year="8">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-incidents" ></button> -->
+                <p class="graphic-legend__legendtext__text">Sep</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthOct" data-year="9">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-no-injury"  ></button> -->
+                <p class="graphic-legend__legendtext__text">Oct</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthNov" data-year="10">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-injuries" ></button> -->
+                <p class="graphic-legend__legendtext__text">Nov</p>
+              </button>
+              <button class="graphic-legend__legendtext" id="legendtextMonthDec" data-year="11">
+                <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+                <p class="graphic-legend__legendtext__text">Dec</p>
+              </button>
+            <!-- </div> -->
+          
+          </div>
+
+
+         <div class="graphic-legend clearfix">
+            <!-- <p class="instructions">Filter by date range</p> -->
+              <div class="sliderContainer clearfix">
+                <!-- <div class="slider-range"><p>Filter by range from <span id="fromdateid">January 01, 2020</span> to <span id="todateid">December 31, 2020</span></p></div> -->
+                <div class="slider-range"><p>Filter by date range</p></div>
+                <div id="date_range_slider_builder"></div>
+              </div>
+         </div>
+      </div>
+
+    <div class="map-legend-wrapper">
+
+       <div class="graphic-legend range-info clearfix">
+         <div class="bottomLegend__legendtext" id="eventInfo" >
+           <p class="bottomLegend__legendtext__text makeBold">Between <span id="fromdateid">January 01, 2020</span> and <span id="todateid">December 31, 2020</span></p>
+         </div>
+         <div class="bottomLegend__legendtext" id="legendtext1" >
+           <!-- <div class='bottomLegend__legendtext__box' id="total-incidents"></div> -->
+
+           <p class="bottomLegend__legendtext__text">Total tweets  <span id="total-incidents-number" class="totalnumber">0</span></p>
+         </div>
+         <div class="bottomLegend__legendtext" id="legendtext2" >
+           <div class='bottomLegend__legendtext__box' id="total-no-injury"></div>
+
+           <p class="bottomLegend__legendtext__text">Incidents without injury <span id="total-no-injury-number" class="totalnumber">0</span></p>
+         </div>
+         <div class="bottomLegend__legendtext" id="legendtext3" >
+           <div class='bottomLegend__legendtext__box' id="total-injuries"></div>
+
+           <p class="bottomLegend__legendtext__text">Reported injuries <span id="total-injuries-number" class="totalnumber">0</span></p></div>
+         <div class="bottomLegend__legendtext" id="legendtext4" >
+           <div class='bottomLegend__legendtext__box' id="total-deaths"></div>
+
+           <p class="bottomLegend__legendtext__text">Reported deaths <span id="total-deaths-number" class="totalnumber">0</span></p></div>
+       </div>
+
+       <div class="legendSizes">
+          <div class="legendSizes-title"><p class="makeBold">Victims:</p></div>
+          <div class="legendSizes-container">
+            <p><span id="minSize">0</span><div id="legendcircle-small" class="legendcircle"></div></p>
+            <p><span id="medSize">3</span><div id="legendcircle-med" class="legendcircle"></div></p>
+            <p><span id="maxSize">5</span><div id="legendcircle-large" class="legendcircle"></div></p>
+            <!-- <p id="maxSize">5</p> -->
+          </div>
+      </div>
+
+
+    </div>
+
+    <div class="map-wrapper">
+      <div id="map"></div>
+      
+      <div id="playerbox">
+
+          <p>Animate the tweets </p>
+
+          <div class="playerButtonBox">
+            <div id="resetButton" class="graphic-bottom__notetext" >
+                <p> <i class="fas fa-play-circle"></i> </p>
+            </div>
+
+            <div id="pauseButton" class="graphic-bottom__notetext">
+                <p> <i class="fas fa-pause-circle"></i> </p>
+            </div>
+
+            <div id="endButton" class="graphic-bottom__notetext">
+                <p> <i class="fas fa-times-circle"></i></p>
+            </div>
+          </div>
+          
+      </div>
+      
+      <div id="tooltip">
+
+        <div id="value">
+          
+        <div id="closebutton"><i class="icon fas fa-times fa-lg"></i></div>
+          <div class="tweetbox">
+
+              <div class="tweetHead">
+                <img src="assets/LOXR1SYL_normal.jpeg" alt="" class="tweetAvatar">
+                <h2 class="account-name">Toronto Police Operations <span class="verified"><div class="verifiedIcon"><img src="assets/pngtube.com-twitter-png-transparent-562440.png" alt=""></div></span>
+                <!-- <div class="tweeterLogo tweeterIcon"></div> -->
+                </h2>
+                <h3 class="account-handle">@TPSOperations</h3>
+              </div>
+
+              <div class="tweetBody-container">
+                <p class="tweetBody"> <br/>Hover over a circle to read each tweet<br/> ... </p>
+                <div class="tweetInfo">
+                  <span>
+                    <!-- <div class="heartIcon"></div><span class="totalTweetLikes">-- </span> -->
+                    <span class="createdAt"> | -- </span>
+                  </span>
+                </div>
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="map-legend-wrapper">
+      
+      <div class="legendHollow">
+            <!-- <div id="legendcircle-Hollow" class="legendStroke"></div> -->
+            <!-- <p>Manually added instances</p> -->
+      </div>
+    </div>
+
+    
+
+    <div id="mobileDashboard">
+         <div class="graphic-legend clearfix">
+
+            <p class="instructions">Filter by month</p>
+            <button class="graphic-legend__legendtext" id="legendtextMonthAll" data-year="All">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+              <p class="graphic-legend__legendtext__text">Display all</p>
+            </button>
+
+            <button class="graphic-legend__legendtext" id="legendtextMonthJan" data-year="0">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-incidents" ></button> -->
+              <p class="graphic-legend__legendtext__text">Jan</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthFeb" data-year="1">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-no-injury"  ></button> -->
+              <p class="graphic-legend__legendtext__text">Feb</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthMar" data-year="2">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-injuries" ></button> -->
+              <p class="graphic-legend__legendtext__text">Mar</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthApr" data-year="3">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+              <p class="graphic-legend__legendtext__text">Apr</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthMay" data-year="4">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-incidents" ></button> -->
+              <p class="graphic-legend__legendtext__text">May</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthJun" data-year="5">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-no-injury"  ></button> -->
+              <p class="graphic-legend__legendtext__text">Jun</p>
+            </button>
+
+            <button class="graphic-legend__legendtext" id="legendtextMonthJul" data-year="6">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-injuries" ></button> -->
+              <p class="graphic-legend__legendtext__text">Jul</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthAug" data-year="7">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+              <p class="graphic-legend__legendtext__text">Aug</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthSep" data-year="8">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-incidents" ></button> -->
+              <p class="graphic-legend__legendtext__text">Sep</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthOct" data-year="9">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-no-injury"  ></button> -->
+              <p class="graphic-legend__legendtext__text">Oct</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthNov" data-year="10">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-injuries" ></button> -->
+              <p class="graphic-legend__legendtext__text">Nov</p>
+            </button>
+            <button class="graphic-legend__legendtext" id="legendtextMonthDec" data-year="11">
+              <!-- <button class='graphic-legend__legendtext__box' id="total-deaths" ></button> -->
+              <p class="graphic-legend__legendtext__text">Dec</p>
+            </button>
+
+          </div>
+
+
+         <div class="graphic-legend clearfix">
+            <!-- <p class="instructions">Filter by date range</p> -->
+              <div class="sliderContainer clearfix">
+                <!-- <div class="slider-range"><p>Filter by range Between <span id="fromdateid">January 01, 2020</span> to <span id="todateid">December 31, 2020</span></p></div> -->
+                <div class="slider-range"><p>Filter by date range</p></div>
+                <div id="date_range_slider_builder"></div>
+              </div>
+         </div>
+      </div>
+
+
+
+      <div class="manuallyadded instructions"><p><span class="manual-cicle"></span> Manually added incidents</p></div>
+    
+
+   <div class="graphic-bottom">
+       <p class="graphic-bottom__graphic-source" id="source">Source: Twitter/@TPSOperations</p>
+        <p class="graphic-bottom__graphic-byline" id="byline">Andres Plana/ Star graphic</p>
+    </div>
+
+  </div>
+
+   
+  </div>
+  <script>
+
+    //od map water colour in dark is: #191a1a
+  
+    mapboxgl.accessToken = 'pk.eyJ1IjoidG9yb250b3N0YXIiLCJhIjoicjB0aUZoayJ9.kA7XwicoTQeHbRCo5dzjkw';
+
+    mapMinZoom = 1;
+    mapMaxZoom = 17;
+
+
+    var windowWidth = window.innerWidth;
+    var zoom, radius, center; 
+    if (windowWidth > 620) {
+      zoom = 10;
+      radius = 8;
+      center = [-79.366,43.720]
+    } else if (windowWidth <= 592 && windowWidth >= 320) {
+      zoom = 9;
+      radius = 4;
+      center = [-79.360,43.716]
+    } else {
+      zoom = 8.5;
+      radius = 3;
+      center = [-79.350,43.706]
+    }
+    // 43.708,-79.376
+
+
+    
+    //Setup mapbox-gl map
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/torontostar/ck5mns3xq029l1inpedn2e8b2',
+      center: center,
+      zoom: zoom,
+      // maxBounds: bounds, // Sets bounds as max
+        minZoom: mapMinZoom,
+        maxZoom: mapMaxZoom
+    })
+
+
+
+    // map.scrollZoom.disable()
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // disable map rotation using right click + drag
+    map.dragRotate.disable();
+
+    // disable map rotation using touch rotation gesture
+    map.touchZoomRotate.disableRotation();
+
+    //////////////////////////
+    // Mapbox+D3 Connection
+    //////////////////////////
+    // Setup our svg layer that we can manipulate with d3
+    var container = map.getCanvasContainer();
+    var svg = d3.select(container).append("svg");
+
+    var colour = d3.scaleOrdinal().domain(["liberal","conservative","ndp","green"]).range(["#d71920", "#1a4782", "#f37021", "#3d9b35"]);
+    var rename = d3.scaleOrdinal().domain(["liberal","conservative","ndp","green"]).range(["Justin Trudeau, Liberal Party","Andrew Scheer, Conservative Party","Jagmeet Singh, NDP","Elizabeth May, Green Party"]);
+    var parseDate = d3.timeParse("%m/%d/%Y");
+    var formatTime = d3.timeFormat("%b %e");
+
+    // we calculate the scale given mapbox state (derived from viewport-mercator-project's code)
+    // to define a d3 projection
+    
+    var width = parseInt(d3.select('#map').style('width')),
+    height = parseInt(d3.select('#map').style('height'));
+
+    var allincidenttotal = 0;
+
+    // ------------------------------------------------------------------------------------------------------- JSON BUILDER STARTS
+
+    var jsonData = {"type":"FeatureCollection", "features":[]};
+    var timerIsFinished = false;
+
+    var month = new Array();
+      month[0] = "January";
+      month[1] = "February";
+      month[2] = "March";
+      month[3] = "April";
+      month[4] = "May";
+      month[5] = "June";
+      month[6] = "July";
+      month[7] = "August";
+      month[8] = "September";
+      month[9] = "October";
+      month[10] = "November";
+      month[11] = "December";
+    
+      var  numberCheckerExclude = 0,
+           numberCheckerNoshots = 0,
+           numberCheckerNoinjuries = 0,
+           numberCheckerinjured = 0,
+           numberCheckerdead = 0,
+           numberCheckerUpdate = 0,
+           numberCheckerManual = 0,
+           numberCheckermissed = 0;
+
+
+      var latlonRandomizer = function(x){
+        // console.log(x)
+        var newCoord = Number(x) + (Math.random() * 0.00010)
+        // console.log(newCoord)
+        return newCoord
+      }
+
+
+
+
+    var jsonParserFunction =  function(){
+
+          // d3.csv('data/compiled_tps_tweets.csv', function(data){ 
+          // d3.csv('data/cleaned_tps_tweets - compiled_tps_tweets2019.csv', function(data){ 
+          d3.csv('data/cleaned_tps_tweets - compiled_tps_tweets2020.csv', function(data){ 
+
+            // console.log(data)
+
+
+
+          // for ( var i = 0; i < data.length + 1; i++) {
+          // for ( var i = 0; i < 582; i++) {
+          for ( var i = 0; i < data.length; i++) {
+          // console.log(data[i]['dead'])
+
+            var jsonBuilder = {
+                  "type": "Feature",
+                  "id": null,
+                  "properties": {
+                    "dead":"",
+                    // "Exclude":"",
+                    "injured":"",
+                    "no_injuries":"",
+                    "created_at":"",
+                    "year":"",
+                    "month":"",
+                    "day":"",
+                    "time":"",
+                    "militime":"",
+                    "street_1":"",
+                    "street_2":"",
+                    "tweet_id":"",
+                    "tweet_id_str":"",
+                    "link_short":"",
+                    "full_tweet":"",
+                    "tweet_likes":"",
+                    "event_type":"",
+                    "event_size":""
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                    ]
+                  }
+                };
+
+
+                var splitDate = data[i]['date-time'].split(" ");
+                var dateParts = splitDate[0].split("/");
+                var tweetHours = "";
+
+                if (splitDate[1] != undefined) {
+                  var tweetHours = " " + splitDate[1]
+                } 
+
+                var dateString = dateParts[1] + "/" + dateParts[0] + "/" + dateParts[2] + tweetHours;
+                // console.log(i, dateString)
+                // console.log(i, data[i]['created_at'])
+                // console.log(i, new Date(data[i]['created_at']))
+
+                // var thisDate = new Date(data[i]['date-time']);
+                // var thisDate = new Date(dateString);
+                var thisDate = new Date(data[i]['created_at']);
+
+                // dateObj -= 1000 * 60 * 60 * 5
+
+                var tweetTextHere = data[i]['full_text'];
+                // if (data[i]['extended_tweet/full_text'] != "") {
+                //     tweetTextHere = data[i]['extended_tweet/full_text']
+                // } else {
+                //     tweetTextHere = data[i]['text']
+                // }
+
+                var eventType, eventSize;
+                if ( data[i]['manually-added'].toLowerCase() == "y" ) {
+                    // console.log('manual')
+                    eventType = "manual";
+                    eventSize = 5;
+                    numberCheckerManual++;
+                } else if ( data[i]['dead'] > 0 ) {
+                    // console.log("dead", data[i]['dead'])
+                    eventType = "dead";
+                    eventSize = Number(data[i]['dead']) * 5;
+                    numberCheckerdead++;
+                } else if ( data[i]['injured'] > 0 ) {
+                    // console.log("injured", data[i]['injured'])
+                    eventType = "injury";
+                    eventSize = Number(data[i]['injured']) * 5;
+                    numberCheckerinjured++;
+                // } else if ( data[i]['Exclude'].toLowerCase() == "y" ) {
+                //     // console.log("Exclude", "0")
+                //     eventType = "exclude";
+                //     eventSize = 0;
+                //     numberCheckerExclude++;
+                } else if ( data[i]['no-injuries'].toLowerCase() == "y" ) {
+                    // console.log("no injuries", data[i]['no-injuries'])
+                    eventType = "no_injuries";
+                    eventSize = 5;
+                    numberCheckerNoinjuries++;
+                } else if ( data[i]['update'].toLowerCase() == "y" ) {
+                    // console.log("update", data[i]['update'])
+                    eventType = "update";
+                    eventSize = 3;
+                    numberCheckerUpdate++;
+                } else if ( data[i]['no-shots'].toLowerCase() == "y" ) {
+                    // console.log("update", data[i]['update'])
+                    eventType = "no_shots";
+                    eventSize = 3;
+                    numberCheckerNoshots++;
+                } else {
+                    eventType = "data error";
+                    eventSize = 0;
+                    numberCheckermissed++;
+                    // console.log(i,data[i])
+                }
+
+                    // console.log(eventType, eventSize)
+
+
+                  jsonBuilder.id = i + 1;
+                  jsonBuilder.properties.dead = data[i]['dead'];
+                  // jsonBuilder.properties.Exclude = data[i]['Exclude'];
+                  jsonBuilder.properties.injured = data[i]['injured'];
+                  jsonBuilder.properties.no_injuries = data[i]['no-injuries'];
+                  jsonBuilder.properties.created_at = data[i]['created_at'];
+                  jsonBuilder.properties.year = thisDate.getFullYear();
+                  jsonBuilder.properties.month = thisDate.getMonth();
+                  jsonBuilder.properties.day = thisDate.getDate();
+                  jsonBuilder.properties.time = [thisDate.getHours(),
+                                                (thisDate.getMinutes()<10?'0':'') + thisDate.getMinutes(), 
+                                                (thisDate.getSeconds()<10?'0':'') + thisDate.getSeconds()];
+                  jsonBuilder.properties.militime = thisDate.getTime();
+                  jsonBuilder.properties.street_1 = data[i]['street-1'];
+                  jsonBuilder.properties.street_2 = data[i]['street-2'];
+                  jsonBuilder.properties.tweet_id = data[i]['id'];
+                  jsonBuilder.properties.tweet_id_str = data[i]['id_str'];
+                  jsonBuilder.properties.link_short = data[i]['entities/urls/0/url'];
+                  jsonBuilder.properties.full_tweet = tweetTextHere;
+                  jsonBuilder.properties.tweet_likes = data[i]['likes'];
+                  jsonBuilder.properties.event_type = eventType;
+                  jsonBuilder.properties.event_size = eventSize;
+                  
+                  // jsonBuilder.geometry.coordinates = [data[i]['lon'],data[i]['lat']];
+
+
+                  jsonBuilder.geometry.coordinates = [latlonRandomizer(data[i]['lon']),latlonRandomizer(data[i]['lat'])];
+
+
+                  // if ( i > 0 ) {
+                  //     if (data[i]['lon'] == data[i-1]['lon']) {
+                  //         jsonBuilder.geometry.coordinates = [latlonRandomizer(data[i]['lon']),latlonRandomizer(data[i]['lat'])];
+                  //     } else {
+                  //       jsonBuilder.geometry.coordinates = [data[i]['lon'],data[i]['lat']];
+                  //     }
+                  // } else {
+                  //   jsonBuilder.geometry.coordinates = [data[i]['lon'],data[i]['lat']];
+                  // }
+
+
+                  // console.log();
+
+            jsonData.features.push(jsonBuilder);
+
+          }
+
+                  // console.log(jsonData);
+                  // console.log(numberCheckerExclude, "Exclude");
+                  // console.log(numberCheckerNoshots, "Noshots");
+                  // console.log(numberCheckerNoinjuries, "Noinjuries");
+                  // console.log(numberCheckerinjured, "injured");
+                  // console.log(numberCheckerdead, "dead");
+                  // console.log(numberCheckerUpdate, "Update");
+                  // console.log(numberCheckerManual, "Manual");
+                  // console.log(numberCheckermissed, "missed");
+                  // console.log(numberCheckerExclude+numberCheckerNoshots+numberCheckerNoinjuries+numberCheckerinjured+numberCheckerdead+numberCheckerUpdate+numberCheckermissed+numberCheckerManual)
+
+                  allincidenttotal = numberCheckerNoshots+numberCheckerNoinjuries+numberCheckerinjured+numberCheckerdead+numberCheckerUpdate+numberCheckermissed+numberCheckerManual
+        });
+             
+             return jsonData
+
+
+      
+    };
+
+    jsonParserFunction()
+
+    // console.log(jsonData)
+
+    // ------------------------------------------------------------------------------------------------------- JSON BUILDER ENDS
+
+
+    // ------------------------------------------------------------------------------------------------------- VARIABLES START
+
+    var totalIncidents = allincidenttotal, 
+        totalNoInjury = 0,
+        totalInjuries = 0,
+        totalDeaths = 0;
+
+    // 0.5 is fastest
+    var howFast = 50;
+
+    var timer;
+    
+    var animateThisFunction = function(data, i) { 
+      var pauseTimer = false;
+
+                totalIncidents = 0, 
+                totalNoInjury = 0,
+                totalInjuries = 0,
+                totalDeaths = 0;
+
+                var plotPusher = Object.assign({}, data);
+
+                var plotIteration = {"type":"FeatureCollection", "features":[]};
+                     
+                $('#resetButton').html("<p><i class='fas fa-undo-alt'></i></p>")
+                // $('#resetButton').html("<p><i class='fas fa-redo-alt'></i></p>")
+                // $('#pauseButton').css("display","inline-block")
+                // $('#endButton').css("display","inline-block")
+
+                     
+
+                    // Maybe skip the next step if mapbox allows empty data sources. otherwise the count of the first row will be bypassed 
+                    // start by showing just the first coordinate
+                    // plotIteration.features.push(plotPusher.features[0]);
+                     
+                     // add it to the map
+                     map.addSource('coordinatePlot', { 
+                       'type': 'geojson', 
+                       'data': plotIteration 
+                     });
+             
+                     map.addLayer({
+                       id: "heatTester",
+                       type: "heatmap",
+                       source: "coordinatePlot",
+                     "maxzoom": 19,
+                     "paint": {
+                     // Increase the heatmap weight based on frequency and property magnitude
+                       "heatmap-weight": [
+                         "interpolate",
+                         ["linear"],
+                         ["get", "size"],
+                         0, 0,
+                         1, 0.2,
+                         2, 0.4,
+                         3, 0.6,
+                         4, 0.8,
+                         5, 1,
+                       ],
+                     // Increase the heatmap color weight weight by zoom level
+                     // heatmap-intensity is a multiplier on top of heatmap-weight
+                       "heatmap-intensity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         0, 1,
+                         15, 3
+                       ],
+                     // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+                     // Begin color ramp at 0-stop with a 0-transparancy color
+                     // to create a blur-like effect.
+                       "heatmap-color": [
+                         "interpolate",
+                         ["linear"],
+                         ["heatmap-density"],
+                         0, "rgba(33,102,172,0)",
+                         0.2, "rgb(103,169,207)",
+                         0.4, "rgb(209,229,240)",
+                         0.6, "rgb(253,219,199)",
+                         0.8, "rgb(239,138,98)",
+                         1, "rgb(178,24,43)"
+                       ],
+                     // Adjust the heatmap radius by zoom level
+                       "heatmap-radius": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         9, 15,
+                         11,20,
+                         15,50
+                       ],
+                     // Transition from heatmap to circle layer by zoom level
+                     // Opacity of the heatmap
+                       "heatmap-opacity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         7, 0.5,
+                         12, 0.6
+                         ]
+                       }
+                       ,
+                      "layout": {
+                        "visibility": "none"
+                      }
+                     }, 'waterway-label');
+
+
+
+             
+                    map.addLayer({
+                       id: "circleTester",
+                       type: "circle",
+                       source: "coordinatePlot",
+                     "maxzoom": 19,
+                     "paint": {
+                       // "circle-color": "rgb(255,111,0)"
+                       // ,
+
+                      "circle-color": ["case",
+                           ["boolean", ["feature-state", "hover"], false],
+                             "rgba(225,225,225,0.8)",
+                             ['match',
+                               ['get', 'event_type'],
+                                 'dead',
+                                 'rgb(255,20,0)',
+                                 'injury',
+                                 'rgb(255,111,0)',
+                                 'no_injuries',
+                                 'rgba(252,186,3,0.7)',
+                                 'manual',
+                                 'rgb(255,20,0)',
+                                 'update',
+                                 'rgba(0,0,0,0)',
+                                 'exclude',
+                                 '#3bb2d0',
+                                 /* other */ 'rgba(200,200,200,0.3)'
+                            ]
+                       ]
+                       ,
+                       "circle-stroke-width": 
+                            ['match',
+                              ['get', 'event_type'],
+                                'dead',
+                                0.4,
+                                'injury',
+                                0.4,
+                                'no_injuries',
+                                0.4,
+                                'manual',
+                                2,
+                                'exclude',
+                                0,
+                                /* other */ 0.5
+                            ]
+                       ,
+                       "circle-stroke-color": 
+                            ['match',
+                               ['get', 'event_type'],
+                                 'dead',
+                                 "rgba(255,111,0,0.5)",
+                                 'injury',
+                                 "rgba(255,111,0,0.5)",
+                                 'no_injuries',
+                                 "rgba(255,111,0,0.5)",
+                                 'manual',
+                                 'rgba(0, 119, 187,0.6)',
+                                 'update',
+                                 'rgba(0,0,0,0)',
+                                 'exclude',
+                                 '#3bb2d0',
+                                 /* other */ '#191A1A'
+                            ]
+                       ,
+                       "circle-radius": 
+                        ['get', 'event_size']
+                        ,
+                       "circle-opacity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         7, 0.4,
+                         12, 0.5,
+                         15, 0.7
+                         ]
+                       }
+                     }, 'waterway-label');
+             
+                     map.addLayer({
+                       id: "circleTester_small",
+                       type: "circle",
+                       source: "coordinatePlot",
+                     "maxzoom": 19,
+                     "paint": {
+                       "circle-color": "rgb(255,111,0)"
+                       ,
+                       "circle-radius": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         9, 3,
+                         11, 3.2,
+                         18, 3.5
+                       ],
+                       "circle-opacity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         7, 0.1,
+                         12, 0.15
+                         ]
+                       }
+                     }, 'waterway-label');
+
+                            $('#pauseButton').on('click',function(){
+                              if (!pauseTimer) {
+                                pauseTimer = true;
+                                $('#pauseButton').html("<p><i class='far fa-pause-circle'></i></p>").css("color","#FE862A") 
+                              } else {
+                                pauseTimer = false;
+                                $('#pauseButton').html("<p><i class='fas fa-pause-circle'></i></p>").css("color","#F8F8F8")
+                              }
+                                // console.log(pauseTimer)
+                            });
+
+                    // on a regular basis, add more coordinates from the saved list and update the map
+                    timer = window.setInterval(function() {
+
+
+                            if (!pauseTimer){
+                 
+                                // map.setLayoutProperty('circleTester', 'visibility', 'visible');
+                                  if (i < plotPusher.features.length) {
+                            
+                                    plotIteration.features.push(plotPusher.features[i])
+
+                                    map.getSource('coordinatePlot').setData(plotIteration);
+                                    // console.log(data.features[i])
+
+                                    // if (plotIteration.features[i].properties.Exclude != "y") {
+                                      totalIncidents++
+                                    if (plotIteration.features[i].properties.event_type != "update") {
+                                      // console.log(plotIteration.features[i].properties.event_type)
+                                      if (jsonData.features[i].properties.no_injuries == "y") {totalNoInjury++}
+                                      if (Number.isInteger(parseInt(jsonData.features[i].properties.injured))) {
+                                          totalInjuries = totalInjuries + parseInt(jsonData.features[i].properties.injured)
+                                      }
+                                      if (Number.isInteger(parseInt(jsonData.features[i].properties.dead))){
+                                          totalDeaths = totalDeaths + parseInt(jsonData.features[i].properties.dead)
+                                      }
+
+                                      // console.log(totalIncidents, totalNoInjury, totalInjuries, totalDeaths)
+                                      $("#total-incidents-number").text(totalIncidents)
+                                      $("#total-no-injury-number").text(totalNoInjury)
+                                      $("#total-injuries-number").text(totalInjuries)
+                                      // console.log(totalInjuries," ", i)
+                                      $("#total-deaths-number").text(totalDeaths)
+                                      // $("#tweetTime").text("Tweet time: " +
+                                      //                     month[data.features[i].properties.month] + " " +
+                                      //                     data.features[i].properties.day + " " +
+                                      //                     data.features[i].properties.year + " - " +
+                                      //                     data.features[i].properties.time[0] + ":" +
+                                      //                     data.features[i].properties.time[1] + ":" +
+                                      //                     data.features[i].properties.time[2])
+
+                                      //Fill up the tweet
+                                      // var tweetBody = jsonData.features[i].properties.full_tweet.replace(/\n/g, "<br/>");
+                                      // var tweetLikes = jsonData.features[i].properties.tweet_likes;
+                                      // var tweetTime = jsonData.features[i].properties.created_at;
+
+                                      // console.log(tweetBody)
+
+                                      // d3.selectAll('.tweetBody').html(tweetBody)
+                                      // d3.selectAll('.totalTweetLikes').html(tweetLikes + " | ")
+
+                                      // d3.selectAll('.createdAt').html(
+                                      //                       month[jsonData.features[i].properties.month] + " " +
+                                      //                       jsonData.features[i].properties.day + " " +
+                                      //                       jsonData.features[i].properties.year + " - " +
+                                      //                       jsonData.features[i].properties.time[0] + ":" +
+                                      //                       jsonData.features[i].properties.time[1] + ":" +
+                                      //                       jsonData.features[i].properties.time[2])
+
+                                    } 
+
+
+                                  i++;
+
+                               // console.log(pauseTimer);
+                              } else {
+                                  window.clearInterval(timer);     
+                                  $('#resetButton').html("<p><i class='fas fa-play-circle'></i></p>")
+                                  // $('#pauseButton').css("display","none")    
+                                  // $('#endButton').css("display","none")
+                              }
+                          }
+
+                    }, howFast);
+             
+             };
+
+             var justDrawTheMap = function(data) { 
+                     console.log('drawing map')
+                     // add it to the map
+
+
+                     map.addSource('coordinatePlot', { 
+                       'type': 'geojson', 
+                       'data': data 
+                     });
+             
+                     map.addLayer({
+                       id: "heatTester",
+                       type: "heatmap",
+                       source: "coordinatePlot",
+                     "maxzoom": 19,
+                     "paint": {
+                     // Increase the heatmap weight based on frequency and property magnitude
+                       "heatmap-weight": [
+                         "interpolate",
+                         ["linear"],
+                         ["get", "size"],
+                         0, 0,
+                         1, 0.2,
+                         2, 0.4,
+                         3, 0.6,
+                         4, 0.8,
+                         5, 1,
+                       ],
+                     // Increase the heatmap color weight weight by zoom level
+                     // heatmap-intensity is a multiplier on top of heatmap-weight
+                       "heatmap-intensity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         0, 1,
+                         15, 3
+                       ],
+                     // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+                     // Begin color ramp at 0-stop with a 0-transparancy color
+                     // to create a blur-like effect.
+                       "heatmap-color": [
+                         "interpolate",
+                         ["linear"],
+                         ["heatmap-density"],
+                         0, "rgba(33,102,172,0)",
+                         0.2, "rgb(103,169,207)",
+                         0.4, "rgb(209,229,240)",
+                         0.6, "rgb(253,219,199)",
+                         0.8, "rgb(239,138,98)",
+                         1, "rgb(178,24,43)"
+                       ],
+                     // Adjust the heatmap radius by zoom level
+                       "heatmap-radius": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         9, 15,
+                         11,20,
+                         15,50
+                       ],
+                     // Transition from heatmap to circle layer by zoom level
+                     // Opacity of the heatmap
+                       "heatmap-opacity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         7, 0.5,
+                         12, 0.6
+                         ]
+                       }
+                       ,
+                      "layout": {
+                        "visibility": "none"
+                      }
+                     }, 'waterway-label');
+
+           
+                     map.addLayer({
+                       id: "circleTester",
+                       type: "circle",
+                       source: "coordinatePlot",
+                     "maxzoom": 19,
+                     "paint": {
+                       // "circle-color": "rgb(255,111,0)"
+                       // ,
+
+                      "circle-color": ["case",
+                           ["boolean", ["feature-state", "hover"], false],
+                             "rgba(225,225,225,0.8)",
+                             ['match',
+                               ['get', 'event_type'],
+                                 'dead',
+                                 'rgb(255,20,0)',
+                                 'injury',
+                                 'rgb(255,111,0)',
+                                 'no_injuries',
+                                 'rgba(252,186,3,0.7)',
+                                 'manual',
+                                 'rgb(255,20,0)',
+                                 'update',
+                                 'rgba(0,0,0,0)',
+                                 'exclude',
+                                 '#3bb2d0',
+                                 /* other */ 'rgba(200,200,200,0.3)'
+                            ]
+                       ]
+                       ,
+                       "circle-stroke-width": 
+                            ['match',
+                              ['get', 'event_type'],
+                                'dead',
+                                0.4,
+                                'injury',
+                                0.4,
+                                'no_injuries',
+                                0.4,
+                                'manual',
+                                2,
+                                'exclude',
+                                0,
+                                /* other */ 0.5
+                            ]
+                       ,
+                       "circle-stroke-color": 
+                            ['match',
+                               ['get', 'event_type'],
+                                 'dead',
+                                 "rgba(255,111,0,0.5)",
+                                 'injury',
+                                 "rgba(255,111,0,0.5)",
+                                 'no_injuries',
+                                 "rgba(255,111,0,0.5)",
+                                 'manual',
+                                 'rgba(0, 119, 187,0.6)',
+                                 'update',
+                                 'rgba(0,0,0,0)',
+                                 'exclude',
+                                 '#3bb2d0',
+                                 /* other */ '#191A1A'
+                            ]
+                       ,
+                       "circle-radius": 
+                        ['get', 'event_size']
+                        ,
+                       "circle-opacity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         7, 0.4,
+                         12, 0.5,
+                         15, 0.7
+                         ]
+                       }
+                     }, 'waterway-label');
+
+
+
+
+
+             
+                     map.addLayer({
+                       id: "circleTester_small",
+                       type: "circle",
+                       source: "coordinatePlot",
+                     "maxzoom": 19,
+                     "paint": {
+                       "circle-color": "rgb(255,111,0)"
+                       ,
+                       "circle-radius": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         9, 3,
+                         11, 3.2,
+                         18, 3.5
+                       ],
+                       "circle-opacity": [
+                         "interpolate",
+                         ["linear"],
+                         ["zoom"],
+                         7, 0.1,
+                         12, 0.15
+                         ]
+                       }
+                     }, 'waterway-label');
+
+
+             
+             };
+              
+   
+        
+    
+    map.on("load", function() {
+
+// ------------------------------------------------------------------------------------------------------------ range slider Starts
+          
+          var windowWidth = window.innerWidth
+
+          if (windowWidth <= 529){
+            $("#mobileDashboard").css('display',"block")
+            $("#mobileDashboard #date_range_slider_builder").html("<div id='date_range_slider'></div>");
+          } else {
+            $("#desktopDashboard").css('display',"block")
+            $("#desktopDashboard #date_range_slider_builder").html("<div id='date_range_slider'></div>");
+
+          }
+
+          $("#date_range_slider").dateRangeSlider({arrows:false});
+
+
+          map.addSource('torontoO', {
+            'type': 'geojson',
+            'data': 'data/Toronto_Outline.json'
+          });
+
+            // ------------------------------------------------------------------------------------------------ toronto outline
+            map.addLayer({
+              id: 'torontoOutline',
+              type: 'line',
+              source: 'torontoO',
+              paint: {
+                        
+                'line-width': 1
+                ,
+
+                 "line-color": "#f4f4f4",
+                 "line-opacity": 0.5
+              }
+                ,
+              
+              "layout": {
+                "visibility": "visible"
+              }
+            }, 'place-city-sm'
+          );
+
+            // ------------------------------------------------------------------------------------------------ neighborhoods
+
+            // add it to the map
+                     map.addSource('neighborhood_boundaries', { 
+                       'type': 'geojson', 
+                       'data': 'data/Neighbourhoods.json' 
+                     });
+
+                     map.addLayer({
+                         'id': 'neighborhood-bounds',
+                         type: 'line',
+                         source: 'neighborhood_boundaries',
+                         paint: {
+                                   
+                           'line-width': 1
+                           ,
+
+                            "line-color": "#f4f4f4",
+                            "line-opacity": 0.5
+                         }
+                           ,
+                         
+                         "layout": {
+                           "visibility": "visible"
+                         }
+                         ,
+                         "filter": ["!in", "AREA_NAME", "Yorkdale-Glen Park (31)","Lawrence Park South (103)","Englemount-Lawrence (32)"]
+                       }, 'place-city-sm'
+                     );
+
+
+
+
+
+              let animateThis = Object.assign({}, jsonData);
+
+                // justDrawTheMap(jsonData)
+
+                justDrawTheMap(animateThis)
+                
+                // animateThisFunction(animateThis, 0)
+                                    
+
+                
+
+// ------------------------------------------------------------------------------------------------------------ Play pause reset button
+
+
+              $('#resetButton').on('click',function(){
+                window.clearInterval(timer);
+
+                $('#fromdateid').text('January 01, 2020')
+                $('#todateid').text('December 31, 2020')
+                $("#date_range_slider").dateRangeSlider("values", new Date(2020, 0, 1), new Date(2020, 11, 31, 23, 59, 59));
+
+                map.removeLayer('circleTester')
+                map.removeLayer('circleTester_small')
+                map.removeLayer('heatTester')
+                map.removeSource('coordinatePlot')
+                d3.select('svg').html("")
+
+
+                pauseTimer = false;
+                $('#pauseButton').html("<p><i class='fas fa-pause-circle'></i></p>").css("color","#F8F8F8")
+
+                
+                $("#tooltip").css("visibility", "hidden");
+                d3.selectAll(".active-node").classed("active-node", false);
+
+
+                animateThis = Object.assign({}, jsonData);
+
+                animateThisFunction(animateThis, 0)
+                // justDrawTheMap(animateThis)
+
+              })
+
+              // $('#pauseButton').on('click',function(){
+              //   if (!pauseTimer) {
+              //     pauseTimer = true;
+              //     $('#pauseButton').html("<p><i class='far fa-pause-circle'></i></p>").css("color","#FE862A") 
+              //   } else {
+              //     pauseTimer = false;
+              //     $('#pauseButton').html("<p><i class='fas fa-pause'></i></p>").css("color","#F8F8F8")
+              //   }
+              //     // console.log(pauseTimer)
+              // });
+
+              $('#endButton').on('click',function(){
+                window.clearInterval(timer);
+
+                $('#fromdateid').text('January 01, 2020')
+                $('#todateid').text('December 31, 2020')
+                $("#date_range_slider").dateRangeSlider("values", new Date(2020, 0, 1), new Date(2020, 11, 31, 23, 59, 59));
+
+                map.removeLayer('circleTester')
+                map.removeLayer('circleTester_small')
+                map.removeLayer('heatTester')
+                map.removeSource('coordinatePlot')
+                d3.select('svg').html("")
+
+                // $('#pauseButton').css("display","none")    
+                // $('#endButton').css("display","none")
+                $('#resetButton').html("<p><i class='fas fa-play-circle'></i></p>") 
+                $('#pauseButton').html("<p><i class='fas fa-pause-circle'></i></p>").css("color","#F8F8F8")
+
+
+                pauseTimer = false;
+
+                animateThis = Object.assign({}, jsonData);
+
+                justDrawTheMap(animateThis)
+              })
+
+
+// ------------------------------------------------------------------------------------------------------------ mapbox qery Starts
+
+              var hoveredStateId = null;
+              var hoveredStateIdChecker = 0;
+
+              var hoverON = function(e){
+                // console.log(e.features[0].properties.time)
+                  $("#tooltip").css("visibility", "visible");
+
+                hoveredStateId = e.features[0].id;
+                if (hoveredStateIdChecker != hoveredStateId) {
+                  map.setFeatureState({source: 'coordinatePlot', id: hoveredStateIdChecker}, { hover: false});
+                }
+
+
+                  map.setFeatureState({source: 'coordinatePlot', id: hoveredStateId}, { hover: true});
+
+                //Fill up the tweet
+                          var tweetBody = e.features[0].properties.full_tweet.replace(/\n/g, "<br/>");
+                          var tweetLikes = e.features[0].properties.tweet_likes;
+                          var tweetTime = new Date(e.features[0].properties.created_at);
+
+                          // console.log(tweetLikes)
+
+                          d3.selectAll('.tweetBody').html(tweetBody)
+                          // d3.selectAll('.totalTweetLikes').html(tweetLikes + " | ")
+                          // d3.select('.createdAt').html(tweetTime)
+
+                          d3.selectAll('.createdAt').html(
+                                                month[e.features[0].properties.month] + " " +
+                                                (e.features[0].properties.day) + " " +
+                                                e.features[0].properties.year + " - " +
+                                                tweetTime.getHours() + ":" +
+                                                (tweetTime.getMinutes()<10?'0':'') + tweetTime.getMinutes() + ":" +
+                                                (tweetTime.getSeconds()<10?'0':'') + tweetTime.getSeconds())
+                  
+
+
+                  hoveredStateIdChecker = hoveredStateId;
+              }
+
+              map.on('mousemove', 'circleTester', function(e) {
+                hoverON(e)
+                resize()
+              });
+
+              map.on('mousemove', 'circleTester_small', function(e) {
+                hoverON(e)
+                resize()
+              });
+
+
+
+
+              map.on("mouseleave", 'circleTester', function(e) {
+                // console.log(e)
+                  map.setFeatureState({source: 'coordinatePlot', id: hoveredStateId}, { hover: false});
+                  hoveredStateId = null;
+                  resize()
+              });   
+
+              resize()        
+
+             
+      }) //END OF MAP.ON(LOAD)
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+      d3.select("#closebutton").on("click",function(d){
+                  $("#tooltip").css("visibility", "hidden");
+                   d3.selectAll(".active-node").classed("active-node", false);
+                   resize()
+            })
+      
+     
+
+      
+
+    var hideLines = function (){
+        // console.log('its on now')
+        map.setLayoutProperty('circleTester', 'visibility', 'visible');
+        map.setLayoutProperty('heatTester', 'visibility', 'none');
+        // turn on all line layers
+    };
+
+    var showLines = function (){
+        // console.log('its of now')
+        map.setLayoutProperty('circleTester', 'visibility', 'none');
+        map.setLayoutProperty('heatTester', 'visibility', 'visible');
+        // turn off all line layers
+    };
+          
+        
+
+$(".onoffswitch").on("mouseup touchend",function(d){
+  console.log(this.children[0].checked)
+  // console.log('clicked');
+
+  if (this.children[0].checked == false) {
+    setTimeout(showLines, 300)
+  } else {
+    setTimeout(hideLines, 300)
+  }
+
+});
+
+
+
+        d3.selectAll(".graphic-legend__legendtext").on("click",function(d){
+              
+              var thisid = d3.select(this).attr('data-year');
+
+
+              var dateFilter = {}
+
+              if (thisid == "All") {
+                  $("#date_range_slider").dateRangeSlider("values", new Date(2020, 0, 1), new Date(2020, 11, 31, 23, 59, 59));
+                  $('#fromdateid').text('January 01, 2020')
+                  $('#todateid').text('December 31, 2020')
+                  getTweetNumbers(1609477199000,1577854800000)
+                  dateFilter.mapbox = ["all",["in", "year", 2020]]
+
+                  console.log("all")
+
+              } else if (thisid == 0){
+                  $("#date_range_slider").dateRangeSlider("values", new Date(2020, 0, 1), new Date(2020, 0, 31));
+                  getTweetNumbers(1580533199000, 1577854800000)
+                  $('#fromdateid').text('January 01, 2020')
+                  $('#todateid').text('January 31, 2020')
+                  dateFilter.mapbox = ["all", ["==", "month", 1] ]
+              } else if (thisid == 1) {
+                  $("#date_range_slider").dateRangeSlider("values", new Date(2020, thisid, 1), new Date(2020, thisid, 29));
+                  dateFilter.mapbox = ["all", ["==", "month", Number(thisid)] ]
+              } else if (thisid == 3 || thisid == 5 || thisid == 8 || thisid == 10 ) {
+                  $("#date_range_slider").dateRangeSlider("values", new Date(2020, thisid, 1), new Date(2020, thisid, 30));
+                  dateFilter.mapbox = ["all", ["==", "month", Number(thisid)] ]
+                  // console.log('pass')
+              } else {
+                  $("#date_range_slider").dateRangeSlider("values", new Date(2020, thisid, 1), new Date(2020, thisid, 31));
+                  dateFilter.mapbox = ["all", ["==", "month", Number(thisid)] ]
+              }
+
+              // console.log(thisid == "All")
+
+              if (thisid == "All") {
+
+                    d3.selectAll('.graphic-legend__legendtext').classed("activelegend", false).classed("filtered-out",false);
+                    map.setFilter('circleTester', ["all",["in", "year", 2020]]);
+
+              } else if ( d3.select(this).classed("activelegend")) {
+                    // console.log(this.attributes['data-id'].value);
+                    d3.select(this).classed("activelegend", false);
+                    d3.selectAll(".graphic-legend__legendtext").classed("filtered-out",false);
+                    d3.selectAll(".location").classed('hidden',false);
+
+                    map.setFilter('circleTester', ["all",["in", "year", 2020]]);
+              }  else {
+                    d3.select('.activelegend').classed("activelegend", false);
+                    d3.select(this).classed("activelegend", true);
+                    d3.selectAll(".graphic-legend__legendtext").classed("filtered-out",true);
+                    d3.selectAll(".location").classed('hidden',true);
+                    d3.selectAll(".location-" + thisid).classed('hidden',false);
+
+                    // turn on only the selected layer
+                    var lineLayer = `${thisid}-lines`
+                    // map.setLayoutProperty(lineLayer, 'visibility', 'visible');
+
+                    map.setFilter('circleTester', dateFilter.mapbox)
+                    map.setFilter('circleTester_small', dateFilter.mapbox)
+
+              }
+                  // d3.selectAll("#tooltip").classed("hidden", true);
+                   d3.selectAll(".active-node").classed("active-node", false);
+                  
+            })
+
+
+
+
+         function resize(){
+                var message = {'resize': 
+                          {
+                            'iframe':'tpstwittermap-iframe',
+                            'height': document.getElementsByClassName('tpstwittermap-wrapper')[0].offsetHeight + 4
+                          }
+                        };
+               
+                parent.postMessage(message, "*");
+            };
+
+            window.addEventListener('load', function() {
+                resize();
+            });
+
+            window.addEventListener("resize", function(){
+                resize();
+            });
+
+
+        document.addEventListener("touchstart", function(){}, true);
+
+
+
+
+
+
+
+
+</script>
+
+<!-- <style>#tpstwittermap-iframe{padding:0;width:100%;border:0;overflow:hidden;} </style><iframe id="tpstwittermap-iframe" src="https://misc.thestar.com/interactivegraphic/2021/01-january/xx-tps-twitter-map/index.html" scrolling="no" height="1000"></iframe>
+ -->
+
+    
+
+
+</body>

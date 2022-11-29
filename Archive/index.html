@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toronto Star</title>
+    <script src="https://misc.thestar.com/interactivegraphic/libraries/d3v5.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>
+
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.0/mapbox-gl-geocoder.min.js"></script>
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.0/mapbox-gl-geocoder.css" type="text/css" />
+    <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+    <style>
+
+
+      body {
+          margin: 0;
+           -webkit-tap-highlight-color: rgba(0,0,0,0);
+           background-color: #f8f8f8;
+        }
+
+      * {
+          box-sizing: border-box;
+        }
+
+      .clearfix:after {
+          visibility: hidden;
+          display: block;
+          font-size: 0;
+          content: " ";
+          clear: both;
+          height: 0;
+          }
+          
+      .clearfix {
+          display: block;
+          }
+
+      .database-outer-wrapper {
+        padding: 1px 0;
+        overflow: hidden;
+      }
+
+      .database-wrapper {
+        max-width: 595px;
+        margin: 24px auto 48px;
+        padding: 48px 0 96px;
+        border-top: 2px solid #cfcfcf;
+        border-bottom: 2px solid #cfcfcf;
+        font-family: 'Merriweather Sans',helvetica neue, helvetica, arial, sans-serif;
+      }
+
+
+      /*///GEOCODING///*/
+
+       .geocoder {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 595px;
+
+        }
+
+        .mapboxgl-ctrl-geocoder {
+            width: 100%;
+            max-width: none;
+            box-shadow: none;
+            height: 100%;
+            font-size: 18px;
+            line-height: 1.4em;
+        }
+
+        .mapboxgl-ctrl-geocoder--icon {
+            top: 11px;
+        }
+
+        .mapboxgl-ctrl-geocoder--icon-close {
+            margin-top: 6px;
+        }
+
+        #geocoder input {
+            font-size: 18px;
+            line-height: 1.4em;
+            border-radius: 4px;
+            width: 100%;
+            border: 1px solid #cfcfcf;
+            margin-bottom: 8px;
+            padding: 8px 36px;
+            display: block;
+            color:#404040;
+            text-transform: uppercase;
+            max-width: none;
+            height: 44px;
+            font-family: 'Merriweather Sans',helvetica neue, helvetica, arial, sans-serif;
+        }
+
+        .mapboxgl-ctrl-geocoder .suggestions {
+            box-shadow: none;
+            font-family: 'Merriweather Sans',helvetica neue, helvetica, arial, sans-serif;
+             border: 1px solid #cfcfcf;
+        }
+
+        .mapbox-gl-geocoder--no-results {
+            padding: 8px;
+        }
+
+         /*///END OF GEOCODING///*/
+
+      p.databasehead {
+          margin: 0;
+          padding-bottom: 8px;
+          color: #666;
+          line-height: 1.3em;
+          font-size: 22px;
+          letter-spacing: 0.8px;
+          font-weight: bold;
+      }
+
+      p.introtext {
+        margin: 0;
+        line-height: 1.3em;
+        color: #888;
+        font-size: 18px;
+        padding-bottom: 4px;
+      }
+
+      p.introtext a {
+      	color: #0072bc;
+      }
+
+
+
+      .searchbox {
+        margin: 56px auto;
+        width: 100%;
+      }
+
+      .searchbox-title {
+        margin: 0;
+        padding-bottom: 16px;
+        font-size: 16px;
+        line-height: 1.2em;
+        letter-spacing: 0.8px;
+        text-transform: lowercase;
+        font-variant: small-caps;
+        color: #888;
+        font-style: italic;
+      }
+
+      .searchbox-title span {
+        display: block;
+        font-style: italic;
+        font-size: 15px;
+      }
+
+      #filterOn {
+        font-size: 18px;
+        line-height: 1.4em;
+        border-radius: 4px;
+        width: 100%;
+        border: 1px solid #cfcfcf;
+        margin-bottom: 8px;
+        padding: 8px;
+        display: block;
+        color: #404040;
+        text-transform: uppercase;
+        background-color: #f8f8f8;
+      }
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: #bbb;
+          opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: #bbb;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
+          color: #bbb;
+        }
+
+      #filterOn:focus {
+        border-color: #666;
+      }
+
+      .filterListContainer {
+        width: 100%;
+        height: 0;
+        position: relative;
+
+      }
+
+      #filterList {
+        margin: 0;
+        width: 100%;
+        border: 1px solid #888;
+        height: auto;
+        max-height: 185px;
+        overflow-y: scroll;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 8px;
+       
+       /* text-transform: uppercase;*/
+        background-color: #f8f8f8;
+        -webkit-overflow-scrolling: touch;
+      }
+
+
+
+      .activefilter {
+        display: block !important;
+      }
+
+      .filterListItem {
+        cursor: pointer;
+        padding: 8px;
+        font-size: 15px;
+        line-height: 1.2em;
+        color: #666;
+      }
+
+      .filterListItem span {
+         font-size: 13px;
+      }
+
+      .filterListItem:hover {
+        background: rgba(100, 205, 245, 0.2);
+      }
+
+
+
+     
+
+     
+
+
+
+      /*///////// SCHOOL BOX //////////*/
+
+      .buildingbox {
+        transition: opacity 0.3s ease-out;
+        opacity: 0; 
+        height: 0;
+        overflow: hidden;
+      }
+
+      .active-buildingbox {
+        opacity: 1;
+        height: auto;
+      }
+
+      .buildingbox p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.3em;
+        color: #555;
+      }
+
+      .topbox-container {
+        display: flex;
+         border-bottom: 1px solid #cfcfcf;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+      }
+
+      .topbox {
+        margin-right: 32px;
+        padding-right: 32px;
+        flex-basis: 80%;
+       /*  border-right: 1px solid #cfcfcf;*/
+      }
+
+      .topbox p {
+        font-size: 18px;
+        letter-spacing: 0.4px;
+        line-height: 1.2em;
+        color: #666;
+        width: 100%;
+        margin: 0 0 8px;
+      }
+
+      #institution {
+        font-size: 24px;
+        color: #666;
+      }
+
+
+
+      #ratebox {
+        height: auto;
+      }
+
+      #ratebox p.totaldetail {
+        padding-bottom: 8px;
+      }
+
+      p.ratedetail {
+        color: #888;
+        font-variant: small-caps;
+        font-size: 19px;
+        letter-spacing: 0.8px;
+        display: block;
+        padding-bottom: 2px;
+        line-height: 1.1em;
+
+      }
+
+      p.ratenumber {
+        font-size: 90px;
+        line-height: 1em;
+        color: #666;
+        font-family: helvetica neue, helvetica, arial, sans-serif;
+      }
+
+       p.ratenumber span {
+        font-size: 0.7em;
+        margin-left: 2px;
+      }
+
+      .topline {
+        width: 100%;
+        display: flex;
+        padding-bottom: 16px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #cfcfcf;
+      }
+
+      .toplinebox {
+        flex-basis: 50%;
+        border-right: 1px solid #cfcfcf;
+        margin-right: 28px;
+        padding-right: 28px;
+        height: 94px;
+        position: relative;
+        z-index: 99;
+      }
+
+
+      .toplinebox:last-of-type {
+         border-right: none;
+         margin-right: 0;
+         padding-right: 0;
+      /*   flex-basis: 30%;*/
+      }
+
+      p.totaldetail {
+        color: #888;
+        font-variant: small-caps;
+        font-size: 15px;
+        letter-spacing: 0.8px;
+        display: block;
+        padding-bottom: 2px;
+        line-height: 1.1em;
+      }
+
+      p.notetext {
+        color: #888;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        display: block;
+        padding: 4px 0;
+        line-height: 1.3em;
+      }
+
+      p.testnumber {
+        position: absolute;
+        bottom: 0;
+        font-size: 50px;
+        line-height: 1em;
+        color: #666;
+        font-family: helvetica neue, helvetica, arial, sans-serif;
+      }
+
+
+      #iicon {
+        color: #fff;
+        background-color: #a0a0a0;
+        width: 16px;
+        height: 16px;
+        font-size: 12px;
+        line-height: 18px;
+        margin:0 4px 0 0;
+        display: inline-block;
+        text-align: center;
+        text-transform: lowercase;
+        border-radius: 100%;
+        cursor: pointer;
+        font-variant: normal;
+      }
+
+      #iicon:hover {
+         background-color: #666;
+      }
+
+
+
+
+     
+
+        .openclosebutton {
+          display: none;
+          cursor: pointer;
+          position: relative;
+          margin: 40px auto 8px;
+          width: 265px;
+         /* border: 1px solid #c4803d;*/
+          border-radius: 4px;
+          padding-right: 28px;
+        }
+
+        .openclosebutton:hover p  {
+          color: #c4803d;
+          /*border: 1px solid #c4803d;*/
+        }
+
+
+
+        .openclosebutton p {
+          font-size: 22px;
+          line-height: 20px;
+          text-align: center;
+          width: 100%;
+          height: 20px;
+          margin: 0;
+          letter-spacing: 0.8px;
+          text-transform: lowercase;
+          font-variant: small-caps;
+          color: #888;
+        }
+
+        .hiddenbutton {
+          display: none;
+        }
+
+        .openclosebuttonvisible {
+          display: block;
+        }
+
+        .arrow {
+          transition: 0.3s;
+          transform: rotate(0deg);
+          margin: -20px -24px 0 0;
+          pointer-events: none;
+          width: 20px;
+          float: right;
+          display: inline;
+
+        }
+
+        .arrowroate {
+          transform: rotate(-180deg);
+           transition: 0.3s;
+        }
+
+        .arrow svg {
+          fill:none;
+          stroke:#888;
+          stroke-miterlimit:10;
+          width: 20px;
+          margin: 0 auto;
+          display: block;
+          stroke-width: 3px;
+        }
+
+        .openclosebutton:hover svg  {
+          stroke: #c4803d;
+          /*border: 1px solid #c4803d;*/
+        }
+
+
+
+       /*///////// EXCEEDENCE TABLE //////////*/
+
+
+      .exceedance-list {
+          display: none;
+          margin-top: 32px;
+      }
+
+      .exceedance-list-active {
+          display: block;
+      }
+
+      #exceedance-table {
+        border-collapse: collapse;
+        color: #666;
+        width: 100%;
+      }
+
+      #exceedance-table th {
+        color: #888;
+        text-transform: lowercase;
+        font-variant: small-caps;
+        font-size: 15px;
+        letter-spacing: 0.8px;
+        margin-right: 2px;
+        text-align: left;
+        padding: 0 40px 4px 0;
+        font-weight: 400;
+        border-bottom: 1px solid #888;
+        vertical-align: bottom;
+      }
+
+      #exceedance-table td {
+        font-size: 14px;
+        line-height: 1.2em;
+        padding: 8px 40px 6px 0;
+        vertical-align: top;
+        border-bottom: 1px solid #cfcfcf;
+        /*font-family: helvetica neue, helvetica, arial, sans-serif;*/
+      }
+
+      #exceedance-table th:first-of-type, #exceedance-table td:first-of-type {
+        width: 50%;
+      }
+
+      #exceedance-table th:last-of-type, #exceedance-table td:last-of-type {
+        padding-right: 0;
+        width: 110px;
+      }
+
+       #exceedance-table td.resultscell {
+        padding-top: 0;
+        padding-bottom: 0;
+       }
+
+      .resultbox {
+        padding: 8px 8px 6px 8px;
+        width: 70px;
+        display: inline-block;
+
+      }
+
+
+
+
+
+@media (max-width: 420px) {
+
+      p.databasehead {
+          font-size: 18px;
+      }
+
+      p.introtext {
+        font-size: 16px;
+      }
+
+      .searchbox-title {
+        font-size: 14px;
+        line-height: 1.1em;
+      }
+
+      .searchbox-title span {
+        font-size: 14px;
+      }
+
+      #filterOn {
+        padding: 4px;
+      }
+
+      #filterList {
+        padding: 4px;
+      }
+
+      .filterListItem {
+        padding: 4px;
+      }
+
+      .topbox-container {
+        display: block;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+      }
+
+      .topbox {
+        width: 100%;
+        margin-right: 0;
+        padding-right: 0;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #cfcfcf;       
+
+      }
+
+      .topbox p {
+        font-size: 16px;
+      }
+
+      #institution {
+        font-size: 20px;
+      }
+
+      
+
+
+
+      p.ratedetail {
+        font-size: 18px;
+      }
+
+      p.ratenumber {
+        font-size: 60px;
+      }
+
+      .toplinebox {
+        margin-right: 12px;
+        padding-right: 12px;
+        height: 94px;
+      }
+
+      p.totaldetail {
+        font-size: 14px;
+      }
+
+      p.testnumber {
+        font-size: 45px;
+      }
+
+      p.testnumber span {
+        margin-left: 1px;
+      }
+
+      .openclosebutton {
+        width: 222px;
+      }
+
+      .openclosebutton p {
+        font-size: 18px;
+      }
+
+      #exceedance-table th {
+        padding: 0 20px 4px 0;
+        font-size: 14px;
+      }
+
+      #exceedance-table td {
+        font-size: 13px;
+        padding: 8px 20px 6px 0;
+      }
+
+      #exceedance-table th:first-of-type, #exceedance-table td:first-of-type {
+        width: 40%;
+      }
+
+      .resultbox {
+        padding: 8px 4px 6px 4px;
+        width: 50px;
+      }
+
+      p.notetext {
+        font-size: 12px;
+
+      }
+
+
+
+}
+
+@media (max-width: 300px) {
+
+    .toplinebox {
+        margin-right: 8px;
+        padding-right: 8px;
+        height: 90px;
+      }
+
+    p.totaldetail {
+        font-size: 14px;
+      }
+
+    p.testnumber {
+        font-size: 35px;
+      }
+
+    .topbox p {
+      font-size: 15px;
+    }
+
+    #exceedance-table th {
+        padding: 0 16px 4px 0;
+        
+      }
+
+    #exceedance-table td {
+        padding: 8px 16px 6px 0;
+        font-size: 12px;
+      }
+
+    .resultbox {
+        width: 40px;
+      }
+
+}
+
+
+.tweetsbox-container{
+  position: relative;
+  overflow: hidden;
+}
+
+#tweetsbox {
+    overflow-x: visible;
+    white-space: nowrap;
+    margin: 0;
+    position: relative;
+}
+
+#tweetsbox iframe {
+    width: 80px !important;
+    display: inline-block !important;
+    vertical-align: top;
+    padding-right: 0 !important;
+    width: 50% !important;
+}
+
+@media (max-width: 420px) {
+    #tweetsbox {
+      overflow-x: scroll;
+  }
+}
+
+/* NAV ARROWS */
+
+        .navarrow-container {
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .navarrow {
+            pointer-events: auto;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            align-items: center;
+           
+        }
+
+        #navarrowprevious {
+          width: 30%;
+        }
+
+        #navarrownext {
+            justify-content: flex-end;
+            width: 50%;
+        }
+
+        .navarrowsvg {
+            stroke-width: 6px;
+            stroke: #000;
+            fill: none;
+            width: 20px;
+            padding: 8px 4px;
+            stroke-opacity: 0.3;
+            transition: 0.2s;
+            margin-top: -20px;
+        }
+
+        .darkmode .navarrowsvg {
+          stroke: #fff;
+        }
+
+        .navarrow:hover .navarrowsvg {
+            stroke-opacity: 0.75;
+        }
+
+        .disabledbutton {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .clicked .navarrowsvg {
+            stroke-width: 8px;
+        }
+
+        #desktopspan {
+          display: none;
+        }
+
+</style>
+
+</head>
+
+  <body>
+    <div class="database-outer-wrapper">
+    <div class="database-wrapper">
+
+<!--       <div class="searchbox">
+        <p class="databasehead">Search for a neighbourhood</p>
+        <p class="searchbox-title">Please do not include periods or accents in search</p>
+        <input autocomplete="off" type="text" id="filterOn" placeholder="Neighbourhood name"  />
+       
+        <div class="filterListContainer">
+          <ul id="filterList"></ul>
+        </div>
+      </div> -->
+      <div class="searchbox">
+        <p class="databasehead">Search for an address</p>
+        <!-- <p class="searchbox-title">Please do not include periods or accents in search</p> -->
+      <div id="geocoder" class="geocoder"></div>
+      </div>
+
+      <div class="buildingbox">
+        <div class="topbox-container">
+        <div class="topbox">
+          <p id="institution">Place</p>
+         <!--  <p id="type">Type</p> -->
+
+        </div>
+<!--          <div class="toplinebox" id="ratebox">
+              <p class="ratedetail">failure rate</p>
+              <p class="ratenumber" id="testrate">1</p>
+         </div> -->
+        </div>
+<!--         <div class="topline">
+            <div class="toplinebox" id="passbox">
+              <p class="totaldetail">total number of tests</p>
+              <p class="testnumber" id="tests">1</p>
+            </div>
+            <div class="toplinebox" id="failbox">
+              <p class="totaldetail">number of tests that exceeded 5 parts per billion</p>
+              <p class="testnumber" id="testsover">1</p>
+            </div>
+        </div> -->
+
+        <div class="tweetsbox-container">
+          <div class="navarrow-container">
+           
+             <div class="navarrow disabledbutton" id="navarrowprevious">
+                    <svg class="navarrowsvg" version="1.1" x="0px" y="0px"
+                         viewBox="0 0 50 100" style="enable-background:new 0 0 50 100;" xml:space="preserve">
+                    <polyline points="45,5 5,50 45,95 "/>
+                    </svg>
+            </div>
+            <div class="navarrow" id="navarrownext">
+                    <svg class="navarrowsvg" version="1.1" x="0px" y="0px"
+                         viewBox="0 0 50 100" style="enable-background:new 0 0 50 100;" xml:space="preserve">
+                    <polyline points="5,95 45,50 5,5 "/>
+                    </svg>
+            </div>
+        </div>
+
+          <div id="tweetsbox"></div>
+        </div>
+
+
+        <!-- <p class='notetext'>Note: The data do not say which tap or fountain in the school or daycare had an exceedance</p> -->
+
+      
+
+    </div>
+
+  </div>
+  </div>
+
+
+  <script>
+
+    // GEOCODING LOOKUP
+
+    var features = [];
+    var searchResultPoint; //x,y
+    var neighbourhood;
+    var neighbourhoodcode;
+
+
+
+
+    var thisname;
+    // var thisid;
+    // var thisdwsno;
+
+    // var thistype;
+    // var thisabove;
+    // var thisbelow;
+    // var leadrate;
+
+    // var parseDate = d3.timeParse("%Y-%m-%d");
+    // var formatTimeDay = d3.timeFormat("%b %e, %Y");
+
+    // var resultsScale = d3.scaleLinear()
+    //   .domain([5, 200,1000])
+    //   .range(['#f6ece2', '#cd945b', '#cd945b']);
+
+    // var exceedancetablecontent;
+
+    // var thistype = d3.scaleOrdinal().domain(["c","v"]).range(["Child care centre", "Private school"]);
+    // var thistest = d3.scaleOrdinal().domain(["s","f"]).range(["Standing water", "Flushed water"]);
+  
+    // d3.csv("neighbourhoodlookupdata.csv").then(function(data){
+
+      // check if element exists
+function exists(element) {
+    if (typeof(element) != 'undefined' && element != null) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+    function ajaxRequest(url, successFunction) {
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+
+        request.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+                // Success!
+                var resp = this.response;
+                successFunction(resp)
+            } else {
+                console.log("We reached our target server, but it returned an error")
+
+            }
+        };
+
+        request.onerror = function() {
+            console.log("There was a connection error of some sort")
+        };
+
+        request.send();
+    }
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: "pk.eyJ1IjoidG9yb250b3N0YXIiLCJhIjoicjB0aUZoayJ9.kA7XwicoTQeHbRCo5dzjkw",
+        marker: false,
+        types: "postcode, address, neighborhood",
+        countries: "CA",
+        bbox: [-79.63927271, 43.58025326, -79.11321936, 43.85544246],
+        placeholder: "Search for an address or postal code"
+    });
+
+    geocoder.addTo('#geocoder');
+
+    geocoder.on('result', function(ev) {
+      neighbourhood = null;
+      neighbourhoodcode = null
+        // console.log(ev.result.center)
+        searchResultPoint = turf.point([ev.result.center[0], ev.result.center[1]], {}); //x,y
+        for (var i = 0, len = features.length; i < len; i++) {
+            var isInside = turf.booleanPointInPolygon(searchResultPoint, features[i]);
+            if (isInside) {
+                neighbourhood = features[i].properties.AREA_NAME
+                neighbourhoodcode = features[i].properties.AREA_LONG_CODE
+            }
+        }
+        if (exists(neighbourhood)) {
+
+          // console.log(neighbourhood)
+          // console.log(neighbourhoodcode)
+
+        loadTweet(neighbourhoodcode);
+
+          
+        } else {
+          console.log("No neighbourhood found. This address might be outside of Toronto")
+        }
+        
+    });
+
+
+    ajaxRequest("neighbourhoods.geojson", function(data) {
+        data = JSON.parse(data)
+        features = data.features;
+    });
+
+    /// END OF GEOCODING LOOKUP
+
+  
+      // onFilter();
+
+      // function delay(callback, ms) {
+      //   var timer = 0;
+      //   return function() {
+      //     var context = this, args = arguments;
+      //     clearTimeout(timer);
+      //     timer = setTimeout(function () {
+      //       callback.apply(context, args);
+      //     }, ms || 0);
+      //   };
+      // }
+
+
+  
+
+      // d3.select('#filterOn').on('keyup', delay(function (e) {
+      //   onFilter();
+      // }, 500));
+      
+      
+      // function onFilter(){
+
+      //   var filterText = d3.select('#filterOn').property('value').toUpperCase();
+
+        
+      //   filteredData = data;
+
+      //   if (filterText != ""){
+      //     var filteredData = data.filter(function(d){
+      //       return (d.neighbourhood.indexOf(filterText) >= 0);
+      //     });
+      //   };
+
+
+        
+      //   d3.select('#filterList').html(
+      //     filteredData.map(function(d,i){
+      //       return '<li class="filterListItem" data-id="'+ d.id +'">' + d.propername + '</li>';
+
+      //     }).join("")
+      //   );
+
+      //   if ( filterText.length > 2 && filteredData.length != 0) {
+      //               d3.select('#filterList').classed('activefilter',true);
+      //             }
+
+      //   else if ( filterText.length > 2 && filteredData.length === 0) {
+      //               d3.select('#filterList').classed('activefilter',true).html("<li class='filterListItemNone'>No neighbourhood found</li>");
+      //             }
+
+      //   else { d3.select('#filterList').classed('activefilter',false);};
+
+      //   d3.selectAll('.filterListItem').on('click', runQuery);
+
+       
+
+      // };
+
+
+
+ // function runQuery(){
+
+ //          thisname = d3.select(this).text();
+ //          thisid = d3.select(this).attr('data-id');
+
+ //          d3.select('#filterList').classed('activefilter',false);
+
+ //          d3.select('.fulllistbox').classed('hiddenlist',true);
+
+
+ //          loadTweet(thisid);
+
+ //      };
+
+
+function loadTweet(m){
+
+  d3.select('#institution').html(neighbourhood);
+
+
+
+  d3.csv("tweetdatatest.csv").then(function(tweetdata){
+
+          var filteredtweetdata = tweetdata.filter(function(d){
+              return (d.neighourhoodid.indexOf(m) >= 0);
+          });
+
+          console.log(filteredtweetdata);
+
+          tweetblockcontent = '';
+
+
+          for (var i = 0; i < filteredtweetdata.length; i++) {
+
+              var tweetid = (filteredtweetdata[i].tweetid);
+              var cleanedtweetid = tweetid.substr(1);
+
+      
+
+              
+              twttr.widgets.createTweet(
+                cleanedtweetid,
+                document.getElementById('tweetsbox'),
+                {
+                  theme: 'light',
+                  conversation: 'none'
+                }
+              );
+
+              
+              // var exceedanceline = '<tr class="exceedancetableline"><td>' + formatTimeDay(parseDate(filteredexceedancedata[i].date)) + '</td><td class="resultscell"><span class="resultbox" style="background-color: ' + resultsScale(filteredexceedancedata[i].result) + '">' + filteredexceedancedata[i].result + '</span></td><td>' + thistest(filteredexceedancedata[i].type) + '</td></tr>';
+
+              //   exceedancetablecontent += exceedanceline;
+
+          }
+
+
+          d3.select('.buildingbox').classed('active-buildingbox',true);
+          resize();
+
+
+            // d3.select("#exceedance-table").html(function(){
+            //                 return "<tr class='exceedancetableline'><th>Date</th><th>Result (ppb)</th><th>Test type</th></tr>" + tweetblockcontent;
+            //           });  
+
+
+
+  });
+
+
+};
+
+
+// function loadData(m){
+
+//       d3.select('#institution').html(data[m].name);
+
+
+//       d3.select('#type').html(data[m].board); 
+
+//       thisabove = +data[m].y;
+//       thisbelow = +data[m].n;
+
+//       thisdwsno = data[m].dwsno;
+  
+
+//       d3.select('#tests').html(thisbelow + thisabove);
+//       d3.select('#testsover').html(thisabove);
+
+//       leadrate = d3.format(".0f")((thisabove / (thisabove + thisbelow)) * 100);
+
+//       d3.select('#testrate').html(leadrate + "<span>%</span>");
+
+//       d3.select('.openclosebutton').classed("openclosebuttonvisible",false);
+//       d3.select('.exceedance-list').classed('exceedance-list-active',false);
+//       d3.select('.morebutton').classed('hiddenbutton',false);
+//       d3.select('.lessbutton').classed('hiddenbutton',true);
+
+//       if (thisabove > 0) {
+//         d3.select('.openclosebutton').classed("openclosebuttonvisible",true);
+//       };
+
+//       d3.select('.buildingbox').classed('active-buildingbox',true);
+//       resize();
+
+//       d3.select('.morebutton').on('click', getExceedences);
+//       d3.select('.arrowroate').classed('arrowroate',false);
+// };
+
+
+
+
+
+// function getExceedences(){
+
+//   d3.select('.exceedance-list').classed('exceedance-list-active',true);
+//   d3.select('.morebutton').classed('hiddenbutton',true);
+//   d3.select('.lessbutton').classed('hiddenbutton',false);
+
+
+//   d3.select('.arrow').classed('arrowroate',true);
+
+//   d3.csv("data/exceedance-list.csv").then(function(exceedancedata){
+
+//           var filteredexceedancedata = exceedancedata.filter(function(d){
+//             return (d.id.indexOf(thisdwsno) === 0);
+//           });
+
+         
+
+//           exceedancetablecontent = '';
+
+  
+
+//           for (var i = 0; i < filteredexceedancedata.length; i++) {
+
+
+              
+//               var exceedanceline = '<tr class="exceedancetableline"><td>' + formatTimeDay(parseDate(filteredexceedancedata[i].date)) + '</td><td class="resultscell"><span class="resultbox" style="background-color: ' + resultsScale(filteredexceedancedata[i].result) + '">' + filteredexceedancedata[i].result + '</span></td><td>' + thistest(filteredexceedancedata[i].type) + '</td></tr>';
+//                 exceedancetablecontent += exceedanceline;
+
+//           }
+
+
+//             d3.select("#exceedance-table").html(function(){
+//                             return "<tr class='exceedancetableline'><th>Date</th><th>Result (ppb)</th><th>Test type</th></tr>" + exceedancetablecontent;
+//                       });    
+
+//   });
+
+//   resize();
+//   setTimeout(function(){ resize(); }, 500);
+
+// };
+
+
+// });
+
+// d3.selectAll('.lessbutton').on('click', function() {
+//     d3.selectAll('.morebutton').classed('hiddenbutton',false);
+//     d3.selectAll('.lessbutton').classed('hiddenbutton',true);
+//     d3.select('.exceedance-list').classed('exceedance-list-active',false);
+//     d3.select('.arrowroate').classed('arrowroate',false);
+//     resize();
+// });
+
+
+document.addEventListener("touchstart", function(){}, true);
+
+
+ // function resize(){
+ //        var message = {'resize': 
+ //                  {
+ //                    'iframe':'leadschooldatabase',
+ //                    'height': document.getElementsByClassName('database-outer-wrapper')[0].offsetHeight + 20
+ //                  }
+ //                };
+       
+ //        parent.postMessage(message, "*");
+ //    };
+
+ //    window.addEventListener('load', function() {
+ //        resize();
+ //    });
+
+ //    window.addEventListener("resize", function(){
+ //        resize();
+ //    });
+
+
+d3.select('#navarrownext').on('click', moveforward);
+d3.select('#navarrowprevious').on('click', movebackward);
+
+var counter = 0;
+
+
+function moveforward() {
+
+    counter += 1;
+
+
+    d3.select('#tweetsbox').style('left', ((-100)*counter + '%') )
+
+                    if (counter > 0) {
+
+                         d3.select('#navarrowprevious').classed('disabledbutton',false);
+                    };
+
+                    // if ($('.slide:nth-last-of-type(2)').hasClass('activeslide')) {
+
+                    //      $('#navarrownext').addClass('disabledbutton');
+                    // };
+
+                    // if ($('.activeslide').attr('data-onforward')) {
+                    //     var thisFunction = $('.activeslide').data('onforward');
+                    //     window[thisFunction]();
+                    // }
+
+                    // $('.activeslide').next().addClass('activeslide');
+                    // $('.activeslide:first').removeClass('activeslide');
+
+                    // $('.activeprogressmarker').next().addClass('activeprogressmarker');
+                    // $('.activeprogressmarker:first').removeClass('activeprogressmarker');
+
+                    // if ($('.activeslide').hasClass('darkmode')) {
+                    //   $('.content-container').addClass('darkmode');
+                    // }
+
+                    // else {
+                    //   $('.content-container').removeClass('darkmode');
+                    // };
+
+
+
+          };
+
+  function movebackward() {
+
+    counter -= 1;
+    d3.select('#tweetsbox').style('left', ((-100)*counter + '%') );
+
+    if (counter == 0) {
+                         d3.select('#navarrowprevious').classed('disabledbutton',true);
+                    };
+  }
+
+    
+</script>
+</body>
+</html>
